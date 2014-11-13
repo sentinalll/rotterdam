@@ -15,3 +15,5 @@ Roman GIT Master - kto za ?
 >>>>>>> .theirs
 
 Continue changing...
+
+bla-bla-bla

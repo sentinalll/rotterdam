@@ -24,7 +24,7 @@
 }
 body {
     background: url(../img/1.jpg) no-repeat center center fixed;
-    background-size: auto auto;
+    background-size: cover;
 }
 .nav-tabs>li>a {
     color: #fff; 
@@ -38,4 +38,10 @@ body {
 .form-control {
     font-size: 17px; 
     padding: 15px;
+}
+.has-error .form-control {
+    border: 2px solid #a94442;
+}
+.help-block{
+        font-size: 18px;
 }

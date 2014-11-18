@@ -37,7 +37,8 @@
     html: false,
     errors: {
       match: 'Does not match',
-      minlength: 'Not long enough'
+      minlength: 'Not long enough',
+      empty: 'Field empty'
     }
   }
 

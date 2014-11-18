@@ -32,12 +32,15 @@
                                 <!-- Text input-->
                                 <div class="form-group margin-vertical-fix">
                                    <div class="col-sm-12 ">
-                                    <input type="text" class="form-control " id="inputName" placeholder="Username" required> 
+                                    <input type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
+                                    <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
                                 <div class="form-group">
                                 <div class="col-sm-12">
-                                  <input type="password" data-minlength="6" class="form-control pwd" id="inputPassword" placeholder="Password" > 
+<!--                                  <input type="password" data-minlength="6" class="form-control" id="inputPassword" data-match="#inputPassword" data-error="Password empty" placeholder="Password" > -->
+                <input type="password" class="form-control margin_top_10" id="inputPasswordConfirm" data-match="#inputPassword" placeholder="Repeat password" data-error="Password empty" required>
+                                <div class="help-block with-errors"></div>
                                 </div>
                                 </div>
                                 </form>
@@ -52,12 +55,13 @@
                                 <form class="form-horizontal" data-toggle="validator" role="form">
                                 <div class="form-group margin-vertical-fix">
                                    <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Username" required> 
+                                    <input type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
+                                <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
                                    <div class="form-group margin_fix">
                                    <div class="col-sm-12">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Недействительный Email" required>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Invalid Email" required>
                                     <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
@@ -67,12 +71,12 @@
                                   <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" >
                                 </div>
                                 <div class="col-sm-12">
-                                  <input type="password" class="form-control margin_top_10" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Пароли не совпадают" placeholder="Repeat password" required>
+                                  <input type="password" class="form-control margin_top_10" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Пароли не совпадают" placeholder="Repeat password" data-error="Password empty" required>
                                   <div class="help-block with-errors"></div>
                                 </div>
                                 </div>
                                 </form>
-                    <button id="reg-btn" type="button" class="btn btn-success btn-block font_size_18">Registration</button>                            
+                    <button id="reg-btn" type="button" class="btn btn-success btn-block font_size_18">Registration</button> 
                     </div>
                   </div>
                 </div>

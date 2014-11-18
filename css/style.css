@@ -23,7 +23,8 @@
     background: none;
 }
 body {
-    background: url(../img/1.jpg) center center fixed;
+    background: url(../img/1.jpg) no-repeat center center fixed;
+    background-size: auto auto;
 }
 .nav-tabs>li>a {
     color: #fff; 

@@ -113,5 +113,34 @@
 .margin_top_10_proc{
     margin-top: 10%;
 }
-
-
+.border_fix {
+    border: none;
+}
+.autorization_tabs {
+    border: none;
+    width: 220px;
+    margin: 0 auto;
+    font-size: 18px;
+    background-color: none;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+    border: none;
+    color: #fff;
+    background: none;
+}
+body {
+    background: url(../img/1.jpg) center center fixed;
+}
+.nav-tabs>li>a {
+    color: #fff; 
+}
+.nav-tabs>li>a:hover {
+    background: none;
+}
+.font_size_18 {
+    font-size: 18px;
+}
+.form-control {
+    font-size: 17px; 
+    padding: 15px;
+}

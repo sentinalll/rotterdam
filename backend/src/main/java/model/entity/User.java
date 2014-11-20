@@ -9,7 +9,6 @@ public class User {
 	@Id
 	@GeneratedValue
 	private long id;
-
 	private String firstname;
 	private String surname;
 	private String zipcode;

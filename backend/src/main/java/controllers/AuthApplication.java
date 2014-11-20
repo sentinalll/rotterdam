@@ -15,6 +15,7 @@ import javax.ws.rs.core.Response;
 
 import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
+import model.entity.LoginData;
 import model.entity.User;
 
 import org.json.JSONException;
@@ -34,14 +35,12 @@ public class AuthApplication {
 	@Path("/login")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response loginAuth(@Context HttpServletRequest hsr,
-			@Context HttpServletResponse rspn, JSONObject obj)
+			@Context HttpServletResponse rspn, LoginData loginData)
 			throws JSONException {
-		System.out.println("in login");
-		String md5Pass = MD5Decoder.encryptPass(obj.getString("password"));
-		User user = userDAO.getUserByLoginAndPassword(obj.getString("login"),
-				md5Pass);
+		User user = userDAO.getUserByLoginAndPassword(loginData.getLogin(),
+				loginData.getPassword());
 		if (user != null)// && cookieUtil.insertSessionUID(rspn, user))
-			return Response.status(200).build();
+			return Response.ok().build();
 		else
 			return Response.status(401).build();
 	}
@@ -57,18 +56,4 @@ public class AuthApplication {
 		else
 			return Response.status(404).build();
 	}
-
-	@GET
-	@Path("/test")
-	public Response testDAO() {
-		System.out.println("in testDAO");
-		User user = userDAO.getUserByLoginAndPassword("rr", "tt");
-		if (user != null) {
-			System.out.println(user.toString());
-			return Response.status(200).build();
-		} else {
-			return Response.status(401).build();
-		}
-	}
-
 }

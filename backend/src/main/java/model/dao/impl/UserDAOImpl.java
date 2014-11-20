@@ -27,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
 			if (session != null && session.isOpen())
 				session.close();
 		}
-		if (users == null) {
+		if (users == null || users.size() == 0) {
 			return null;
 		} else {
 			return users.get(0);

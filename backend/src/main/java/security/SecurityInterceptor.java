@@ -3,7 +3,9 @@ package security;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
+import javax.annotation.security.PermitAll;
 import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
 import org.jboss.resteasy.core.ResourceMethodInvoker;
@@ -19,10 +21,11 @@ public class SecurityInterceptor implements
 	@Override
 	public void filter(ContainerRequestContext requestContext)
 			throws IOException {
-		System.out.println("ContainerRequestFilter");
 		ResourceMethodInvoker methodInvoker = (ResourceMethodInvoker) requestContext
 				.getProperty("org.jboss.resteasy.core.ResourceMethodInvoker");
 		Method method = methodInvoker.getMethod();
-		System.out.println(method.getName());
+		if (method.isAnnotationPresent(PermitAll.class)) {
+			requestContext.abortWith(Response.status(403).build());
+		}
 	}
 }

@@ -2,6 +2,10 @@ package model.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
+import tools.HibernateUtil;
 import model.dao.UserDAO;
 import model.entity.User;
 
@@ -9,8 +13,26 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUserByLoginAndPassword(String login, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = null;
+		List<User> users = null;
+		try {
+			session = HibernateUtil.getSession();
+			users = session.createCriteria(User.class)
+					.add(Restrictions.eq("email", login))
+					.add(Restrictions.eq("password", password)).list();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (session != null && session.isOpen())
+				session.close();
+		}
+		if (users == null) {
+			return null;
+		} else {
+			return users.get(0);
+		}
+
 	}
 
 	@Override

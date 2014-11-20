@@ -5,6 +5,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -28,29 +29,46 @@ public class AuthApplication {
 
 	private UserDAO userDAO = new UserDAOImpl();
 	private CookieUtil cookieUtil = new CookieUtil();
-	@POST
-    @Path("/login")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public Response loginAuth(@Context HttpServletRequest hsr, @Context HttpServletResponse rspn, JSONObject obj)
-            throws JSONException {
-        String md5Pass = MD5Decoder.encryptPass(obj.getString("password"));
-        User user = userDAO.getUserByLoginAndPassword(obj.getString("login"), md5Pass);
-        if(user != null )//&& cookieUtil.insertSessionUID(rspn, user))
-            return Response.status(200).build();
-        else
-            return Response.status(401).build();
-    }
 
-    @RolesAllowed({"Driver"})
-    @POST
-    @Path("/logout")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response logoutAuth(@Context HttpServletRequest hsr, @Context HttpServletResponse rspn) {
-        if(true)//cookieUtil.removeSessionUID(hsr, rspn))
-            return Response.ok().build();
-        else
-            return Response.status(404).build();
-    }
-	
-	
+	@POST
+	@Path("/login")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	public Response loginAuth(@Context HttpServletRequest hsr,
+			@Context HttpServletResponse rspn, JSONObject obj)
+			throws JSONException {
+		System.out.println("in login");
+		String md5Pass = MD5Decoder.encryptPass(obj.getString("password"));
+		User user = userDAO.getUserByLoginAndPassword(obj.getString("login"),
+				md5Pass);
+		if (user != null)// && cookieUtil.insertSessionUID(rspn, user))
+			return Response.status(200).build();
+		else
+			return Response.status(401).build();
+	}
+
+	@RolesAllowed({ "Driver" })
+	@POST
+	@Path("/logout")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response logoutAuth(@Context HttpServletRequest hsr,
+			@Context HttpServletResponse rspn) {
+		if (true)// cookieUtil.removeSessionUID(hsr, rspn))
+			return Response.ok().build();
+		else
+			return Response.status(404).build();
+	}
+
+	@GET
+	@Path("/test")
+	public Response testDAO() {
+		System.out.println("in testDAO");
+		User user = userDAO.getUserByLoginAndPassword("rr", "tt");
+		if (user != null) {
+			System.out.println(user.toString());
+			return Response.status(200).build();
+		} else {
+			return Response.status(401).build();
+		}
+	}
+
 }

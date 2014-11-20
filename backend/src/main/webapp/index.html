@@ -32,19 +32,19 @@
                                 <!-- Text input-->
                                 <div class="form-group margin-vertical-fix">
                                    <div class="col-sm-12 ">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
+                                    <input id="loginField" type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
                                     <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
                                 <div class="form-group">
                                 <div class="col-sm-12">
 <!--                                  <input type="password" data-minlength="6" class="form-control" id="inputPassword" data-match="#inputPassword" data-error="Password empty" placeholder="Password" > -->
-                <input type="password" class="form-control margin_top_10" id="inputPasswordConfirm"  placeholder="Password" data-error="Password empty" required>
+                <input id="password" type="password" class="form-control margin_top_10" id="inputPasswordConfirm"  placeholder="Password" data-error="Password empty" required>
                                 <div class="help-block with-errors"></div>
                                 </div>
                                 </div>
                                 </form>
-                    <button id="reg-btn" type="button" class="btn btn-warning btn-block font_size_18">Login</button>
+                    <button id="login-btn" type="button" class="btn btn-warning btn-block font_size_18">Login</button>
                                
                                
                                 </div>
@@ -89,5 +89,6 @@
      <script src="resources/js/angular-strap.min.js"></script>
      <script src="resources/js/angular-strap.tpl.min.js"></script>
      <script src="resources/js/validator.js"></script>
+     <script src="resources/js/autorization.js"></script>
   </body>
 </html>

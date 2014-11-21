@@ -45,3 +45,12 @@ body {
 .help-block{
         font-size: 18px;
 }
+.fogot_password{
+    font-size: 18px;
+    color: #000;
+}
+.fogot_password:hover {
+    color: orange;
+    text-decoration: none;
+    cursor: pointer;
+}

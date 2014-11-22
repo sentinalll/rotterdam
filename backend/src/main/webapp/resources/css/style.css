@@ -37,7 +37,7 @@ body {
 }
 .form-control {
     font-size: 17px; 
-    padding: 15px;
+/*    padding: 15px;*/
 }
 .has-error .form-control {
     border: 2px solid #a94442;

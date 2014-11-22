@@ -2,6 +2,7 @@
            $("#login-btn").click(function submitButton() {
             var Auth = {
             login: $('#loginField').val(),
+//            email: $('#loginField').val(),    
             password: $('#login_password').val()
         };
           addData(Auth);

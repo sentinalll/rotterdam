@@ -15,7 +15,28 @@
             };
             addUser(User);
         });
+        $("#inputFogotPassword").click(function fogotButton() { 
+           var Fogot_pass = {
+             email_fogot: $('#inputFogotPassword').val()   
+           };
+          fogotPass(Fogot_pass);
+        }
     });
+
+        function fogotPass(data) {// pass your data in method
+            $.ajax({
+                type: "POST",
+                url: "api/restore",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                statusCode: {
+                    200: function () {
+                        alert("Success...");
+                    }
+                }
+            });
+        };
       
         function addUser(data) {// pass your data in method
             

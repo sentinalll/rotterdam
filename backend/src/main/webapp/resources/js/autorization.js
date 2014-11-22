@@ -2,9 +2,40 @@
         $("#login-btn").click(function submitButton() {
             var Auth = {
             login: $('#loginField').val(),
-            password: $('#password').val()
+            password: $('#login_password').val()
         };
           addData(Auth);
+            });
+             $("#reg-btn").click(function registerButton() {
+            var User = {
+                login: $('#inputName').val(),
+                pass: $('#inputPassword').val(),
+                email: $('#inputEmail').val(),
+                passconfirm:$('#inputPasswordConfirm').val()
+            };
+            addUser(User);
+        });
+    });
+      
+        function addUser(data) {// pass your data in method
+            
+            $.ajax({
+                type: "POST",
+                url: "api/registration",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                statusCode: {
+                    200: function () {
+                        alert("Success...");
+                    },
+                    401: function () {
+                        alert("Invalid login or password");
+                    }
+                }
+            });
+        }
+            
             
         function addData(data) {
           $.ajax({
@@ -40,6 +71,5 @@
               }
           });
       }
-                    });
-    });
+
      

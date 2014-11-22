@@ -1,5 +1,5 @@
        $(document).ready(function(){
-        $("#login-btn").click(function submitButton() {
+           $("#login-btn").click(function submitButton() {
             var Auth = {
             login: $('#loginField').val(),
             password: $('#login_password').val()

@@ -20,7 +20,7 @@
              email_fogot: $('#inputFogotPassword').val()   
            };
           fogotPass(Fogot_pass);
-        }
+        });
     });
 
         function fogotPass(data) {// pass your data in method

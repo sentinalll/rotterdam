@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+The OpenShift `jbossas` cartridge documentation can be found at:
+
+http://openshift.github.io/documentation/oo_cartridge_guide.html#jbossas
+=======
 rotterdam
 =========
 
@@ -17,3 +22,4 @@ Roman GIT Master - kto za ?
 Continue changing...
 
 bla-bla-bla
+>>>>>>> refs/remotes/github/sprint1

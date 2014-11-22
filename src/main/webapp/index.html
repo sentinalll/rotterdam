@@ -4,7 +4,7 @@
     <meta charset="utf-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Learning Hub</title>
+    <title>Driver Tools</title>
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -32,19 +32,22 @@
                                 <!-- Text input-->
                                 <div class="form-group margin-vertical-fix">
                                    <div class="col-sm-12 ">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
+                                    <input id="loginField" type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
                                     <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
                                 <div class="form-group">
                                 <div class="col-sm-12">
 <!--                                  <input type="password" data-minlength="6" class="form-control" id="inputPassword" data-match="#inputPassword" data-error="Password empty" placeholder="Password" > -->
-                <input type="password" class="form-control margin_top_10" id="inputPasswordConfirm" data-match="#inputPassword" placeholder="Repeat password" data-error="Password empty" required>
+                <input id="password" type="password" class="form-control margin_top_10" id="inputPasswordConfirm"  placeholder="Password" data-error="Password empty" required>
                                 <div class="help-block with-errors"></div>
+                                    <div class="center-block">
+                                        <a class="fogot_password" data-toggle="modal" data-target=".bs-example-modal-lg">Forgot password</a>
+                                    </div>
                                 </div>
                                 </div>
                                 </form>
-                    <button id="reg-btn" type="button" class="btn btn-warning btn-block font_size_18">Login</button>
+                    <button id="login-btn" type="button" class="btn btn-warning btn-block font_size_18">Login</button>
                                
                                
                                 </div>
@@ -83,11 +86,31 @@
              </div>
          </diw>
      </div>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+                <form class="form-horizontal" data-toggle="validator" role="form">
+                                   <div class="form-group margin_fix">
+                                       <div class="modal-body">
+                                   <div class="col-sm-12">
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter your Email" data-error="Invalid Email" required>
+                                    <div class="help-block with-errors"></div>
+                                    </div>
+                                       </div>    
+                                  </div>
+                                </form>
+         <div class="modal-footer">
+                            <button id="btn-fogot-password" type="button" class="btn btn-success btn-block font_size_18">Sent password</button> 
+        </div>
+    </div>
+  </div>
+</div>
      <script src="resources/js/jquery-2.1.1.min.js"></script>
      <script src="resources/js/bootstrap.min.js"></script>
      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
      <script src="resources/js/angular-strap.min.js"></script>
      <script src="resources/js/angular-strap.tpl.min.js"></script>
      <script src="resources/js/validator.js"></script>
+     <script src="resources/js/autorization.js"></script>
   </body>
 </html>

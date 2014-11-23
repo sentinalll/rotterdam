@@ -15,7 +15,7 @@
             };
             addUser(User);
         });
-        $("#inputFogotPassword").click(function fogotButton() { 
+        $("#btn-fogot-password").click(function fogotButton() { 
            var Fogot_pass = {
              email_fogot: $('#inputFogotPassword').val()   
            };

@@ -15,7 +15,6 @@ import javax.ws.rs.core.Response;
 
 import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
-import model.entity.LoginData;
 import model.entity.User;
 
 import org.json.JSONException;
@@ -35,10 +34,12 @@ public class AuthApplication {
 	@Path("/login")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response loginAuth(@Context HttpServletRequest hsr,
-			@Context HttpServletResponse rspn, LoginData loginData)
+			@Context HttpServletResponse rspn, String data)
 			throws JSONException {
-		User user = userDAO.getUserByLoginAndPassword(loginData.getLogin(),
-				loginData.getPassword());
+		System.out.println(data);
+		JSONObject loginData = new JSONObject(data);
+		User user = userDAO.getUserByLoginAndPassword(loginData.getString("login"),
+				loginData.getString("password"));
 		if (user != null)// && cookieUtil.insertSessionUID(rspn, user))
 			return Response.ok().build();
 		else

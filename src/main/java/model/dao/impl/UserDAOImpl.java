@@ -55,8 +55,21 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean insert(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		Session session = null;
+		try {
+			session = HibernateUtil.getSession();
+			session.beginTransaction();
+			session.save(user);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			if (session != null && session.isOpen())
+				session.close();
+		}
+		return true;
+
 	}
 
 	@Override

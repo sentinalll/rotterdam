@@ -1,14 +1,15 @@
        $(document).ready(function(){
            $("#login-btn").click(function submitButton() {
             var Auth = {
-            login: $('#loginField').val(),
+            login: $('#inputLoginEmail').val(),
             password: $('#login_password').val()
         };
           addData(Auth);
             });
              $("#reg-btn").click(function registerButton() {
             var User = {
-                login: $('#inputName').val(),
+                Name: $('#inputName').val(),
+                LastName: $('#inputLastName').val(),
                 pass: $('#inputPassword').val(),
                 email: $('#inputEmail').val(),
                 passconfirm:$('#inputPasswordConfirm').val()

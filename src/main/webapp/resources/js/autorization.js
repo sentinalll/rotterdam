@@ -15,9 +15,9 @@
             };
             addUser(User);
         });
-        $("#btn-fogot-password").click(function fogotButton() { 
+        $("#btn-forgot-password").click(function fogotButton() { 
            var Fogot_pass = {
-             email_fogot: $('#inputFogotPassword').val()   
+             email_fogot: $('#inputForgotPassword').val()   
            };
           fogotPass(Fogot_pass);
         });

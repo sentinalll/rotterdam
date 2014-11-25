@@ -66,6 +66,7 @@ public class Registration {
 			return false;
 		}
 		User user = Factory.getInstance().getUserDAO().selectByEmail(email);
+		System.out.println(user+"in chekEmail");
 		return user == null;
 	}
 

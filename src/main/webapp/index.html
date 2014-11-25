@@ -4,7 +4,7 @@
     <meta charset="utf-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Driver Tools</title>
+    <title>Drive Tracking</title>
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -16,7 +16,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="body_background">
      
      <div class="container">
          <diw class="row">
@@ -32,14 +32,13 @@
                                 <!-- Text input-->
                                 <div class="form-group margin-vertical-fix">
                                    <div class="col-sm-12 ">
-                                    <input id="loginField" type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
+                                    <input type="email" class="form-control" id="inputLoginEmail" placeholder="Email" data-error="Enter Email address" required> 
                                     <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
                                 <div class="form-group">
                                 <div class="col-sm-12">
-<!--                                  <input type="password" data-minlength="6" class="form-control" id="inputPassword" data-match="#inputPassword" data-error="Password empty" placeholder="Password" > -->
-                <input id="password" type="password" class="form-control margin_top_10" id="inputPasswordConfirm"  placeholder="Password" data-error="Password empty" required>
+                <input id="login_password" type="password" class="form-control margin_top_10"   placeholder="Password" data-error="Password empty" required>
                                 <div class="help-block with-errors"></div>
                                     <div class="center-block">
                                         <a class="fogot_password" data-toggle="modal" data-target=".bs-example-modal-lg">Forgot password</a>
@@ -48,18 +47,21 @@
                                 </div>
                                 </form>
                     <button id="login-btn" type="button" class="btn btn-warning btn-block font_size_18">Login</button>
-                               
-                               
-                                </div>
-                                
+                                </div>    
   </div>
   <div class="tab-pane" id="myModalLabel2">
                                 <div class="modal-body">
                                 <form class="form-horizontal" data-toggle="validator" role="form">
                                 <div class="form-group margin-vertical-fix">
                                    <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Username" data-error="Enter username" required> 
+                                    <input type="text" class="form-control" id="inputName" placeholder="Name" data-error="Enter username" required> 
                                 <div class="help-block with-errors"></div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group margin_fix">
+                                   <div class="col-sm-12">
+                                    <input type="text" class="form-control" id="inputLastName" placeholder="Lastname" data-error="Enter lastname" required> 
+                                    <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
                                    <div class="form-group margin_fix">
@@ -93,14 +95,14 @@
                                    <div class="form-group margin_fix">
                                        <div class="modal-body">
                                    <div class="col-sm-12">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter your Email" data-error="Invalid Email" required>
+                                    <input type="email" class="form-control" id="inputForgotPassword" placeholder="Enter your Email" data-error="Invalid Email" required>
                                     <div class="help-block with-errors"></div>
                                     </div>
                                        </div>    
                                   </div>
                                 </form>
          <div class="modal-footer">
-                            <button id="btn-fogot-password" type="button" class="btn btn-success btn-block font_size_18">Sent password</button> 
+                            <button id="btn-forgot-password" type="button" class="btn btn-success btn-block font_size_18">Sent password</button> 
         </div>
     </div>
   </div>

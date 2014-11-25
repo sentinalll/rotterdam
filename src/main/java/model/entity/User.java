@@ -1,10 +1,20 @@
 package model.entity;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import model.dao.inerfaces.HibernateL2Cache;
+
 @Entity
-@Table(name = "User")
-public class User {
+@Table(name = "USER")
+public class User implements Principal, HibernateL2Cache {
 
 	@Id
 	@GeneratedValue
@@ -14,6 +24,60 @@ public class User {
 	private String zipcode;
 	private String email;
 	private String password;
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "idUserRole")
+	private UserRole role;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Session> sessions;
+
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		// if nothing changed - exit
+		if (sameAsBefore(role))
+			return;
+		// setting new category
+		this.role = role;
+
+	}
+
+	private boolean sameAsBefore(UserRole newOwner) {
+		return role == null ? newOwner == null : role.equals(newOwner);
+	}
+
+	@JsonIgnore
+	public ArrayList<Session> getSessions() {
+		return new ArrayList<Session>(sessions);
+	}
+
+	@Deprecated
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
+	}
+
+	public void removeSession(Session session) {
+		if (!sessions.contains(session))
+			return;
+		// removing user from current category
+		sessions.remove(session);
+		session.setUser(null);
+	}
+
+	public void addSession(Session session) {
+		if (sessions.contains(session))
+			return;
+		// add new user to current category
+		sessions.add(session);
+		// setting category of user to this category
+		session.setUser(this);
+	}
 
 	public long getId() {
 		return id;
@@ -122,6 +186,11 @@ public class User {
 		} else if (!zipcode.equals(other.zipcode))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String getName() {
+		return "UserPrincipal";
 	}
 
 }

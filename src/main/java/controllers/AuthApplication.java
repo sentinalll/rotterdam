@@ -13,33 +13,34 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import model.dao.UserDAO;
-import model.dao.impl.UserDAOImpl;
-import model.entity.LoginData;
 import model.entity.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import controllers.auth.CookieUtil;
-import tools.MD5Decoder;
+import tools.Factory;
+import tools.SecuritySettings;
 
 @Path("/")
 @PermitAll
 public class AuthApplication {
 
-	private UserDAO userDAO = new UserDAOImpl();
 	private CookieUtil cookieUtil = new CookieUtil();
 
 	@POST
 	@Path("/login")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response loginAuth(@Context HttpServletRequest hsr,
-			@Context HttpServletResponse rspn, LoginData loginData)
+			@Context HttpServletResponse rspn, String data)
 			throws JSONException {
-		User user = userDAO.getUserByLoginAndPassword(loginData.getLogin(),
-				loginData.getPassword());
-		if (user != null)// && cookieUtil.insertSessionUID(rspn, user))
+		JSONObject loginData = new JSONObject(data);
+		User user = Factory
+				.getInstance()
+				.getUserDAO()
+				.getUserByEmailAndPassword(loginData.getString("login"),
+						SecuritySettings.code(loginData.getString("password")));
+		if (user != null && cookieUtil.insertSessionUID(rspn, user))
 			return Response.ok().build();
 		else
 			return Response.status(401).build();
@@ -51,9 +52,27 @@ public class AuthApplication {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response logoutAuth(@Context HttpServletRequest hsr,
 			@Context HttpServletResponse rspn) {
-		if (true)// cookieUtil.removeSessionUID(hsr, rspn))
+		if (cookieUtil.removeSessionUID(hsr, rspn))
 			return Response.ok().build();
 		else
 			return Response.status(404).build();
+	}
+
+	@RolesAllowed("Admin")
+	@GET
+	@Path("/testadmin")
+	public Response test(@Context HttpServletRequest hsr,
+			@Context HttpServletResponse rspn) throws JSONException {
+		System.out.println("testadmin");
+		return Response.ok().build();
+	}
+
+	@RolesAllowed("Unpaid")
+	@GET
+	@Path("/testunpaid")
+	public Response testunpaid(@Context HttpServletRequest hsr,
+			@Context HttpServletResponse rspn) throws JSONException {
+		System.out.println("testunpaid");
+		return Response.ok().build();
 	}
 }

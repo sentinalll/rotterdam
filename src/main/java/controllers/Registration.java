@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.annotation.security.PermitAll;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,31 +13,60 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import model.dao.UserDAO;
-import model.dao.impl.UserDAOImpl;
 import model.entity.User;
 
 import org.json.JSONObject;
 
+import tools.Factory;
 
 @Path("/")
 @PermitAll
 public class Registration {
-
 	@POST
 	@Path("/registration")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response registerNewUser(@Context HttpServletRequest hsr,
-			@Context HttpServletResponse rspn,String data) {
+			@Context HttpServletResponse rspn, String data) {
+
 		JSONObject registrationData = new JSONObject(data);
 		User user = new User();
-		user.setFirstname(registrationData.getString("login"));
+		user.setFirstname(registrationData.getString("Name"));
+		user.setSurname(registrationData.getString("LastName"));
 		user.setEmail(registrationData.getString("email"));
 		user.setPassword(registrationData.getString("pass"));
-		UserDAO userDAO = new UserDAOImpl();
-		userDAO.insert(user);
-		return Response.ok().build();
+		user.setRole(Factory.getInstance().getUserRoleDAO().selectById(4));
+		String confirmPassword = registrationData.getString("passconfirm");
+		if (checkPassword(user.getPassword(), confirmPassword)
+				&& checkEmail(user.getEmail())) {
+			Factory.getInstance().getUserDAO().insert(user);
+			return Response.ok().build();
+		} else {
+			return Response.status(406).build();
+		}
 
+	}
+
+	private boolean checkPassword(String password, String confirmPassword) {
+		if (password == null || password.equals("")) {
+			return false;
+		}
+		if (!password.equals(confirmPassword)) {
+			return false;
+		}
+		return true;
+	}
+
+	private boolean checkEmail(String email) {
+		if (email == null || email.equals("")) {
+			return false;
+		}
+		Pattern emailPattern = Pattern.compile("(?<email>[\\w.]+@[\\w.]+)");
+		Matcher emailMatcher = emailPattern.matcher(email);
+		if (!emailMatcher.find()) {
+			return false;
+		}
+		User user = Factory.getInstance().getUserDAO().selectByEmail(email);
+		return user == null;
 	}
 
 }

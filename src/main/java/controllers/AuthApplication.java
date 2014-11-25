@@ -13,7 +13,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import model.dao.UserDAO;
 import model.dao.impl.UserDAOImpl;
 import model.entity.User;
 
@@ -21,13 +20,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import controllers.auth.CookieUtil;
+import tools.Factory;
 import tools.MD5Decoder;
 
 @Path("/")
 @PermitAll
 public class AuthApplication {
 
-	private UserDAO userDAO = new UserDAOImpl();
 	private CookieUtil cookieUtil = new CookieUtil();
 
 	@POST
@@ -36,11 +35,11 @@ public class AuthApplication {
 	public Response loginAuth(@Context HttpServletRequest hsr,
 			@Context HttpServletResponse rspn, String data)
 			throws JSONException {
-		System.out.println(data);
 		JSONObject loginData = new JSONObject(data);
-		User user = userDAO.getUserByLoginAndPassword(loginData.getString("login"),
-				loginData.getString("password"));
-		if (user != null)// && cookieUtil.insertSessionUID(rspn, user))
+		User user = Factory.getInstance().getUserDAO()
+				.getUserByEmailAndPassword(loginData.getString("login"),
+						loginData.getString("password"));
+		if (user != null && cookieUtil.insertSessionUID(rspn, user))
 			return Response.ok().build();
 		else
 			return Response.status(401).build();
@@ -52,9 +51,27 @@ public class AuthApplication {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response logoutAuth(@Context HttpServletRequest hsr,
 			@Context HttpServletResponse rspn) {
-		if (true)// cookieUtil.removeSessionUID(hsr, rspn))
+		if (cookieUtil.removeSessionUID(hsr, rspn))
 			return Response.ok().build();
 		else
 			return Response.status(404).build();
+	}
+
+	@RolesAllowed("Admin")
+	@GET
+	@Path("/testadmin")
+	public Response test(@Context HttpServletRequest hsr,
+			@Context HttpServletResponse rspn) throws JSONException {
+		System.out.println("testadmin");
+		return Response.ok().build();
+	}
+
+	@RolesAllowed("Unpaid")
+	@GET
+	@Path("/testunpaid")
+	public Response testunpaid(@Context HttpServletRequest hsr,
+			@Context HttpServletResponse rspn) throws JSONException {
+		System.out.println("testunpaid");
+		return Response.ok().build();
 	}
 }

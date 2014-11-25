@@ -8,5 +8,8 @@
 		<property name="show_sql">false</property>
 		<property name="current_session_context_class">thread</property>
 		<mapping class="model.entity.User" />
+		<mapping class="model.entity.Session" />
+		<mapping class="model.entity.RuleType" />
+		<mapping class="model.entity.UserRole" />
 	</session-factory>
 </hibernate-configuration>

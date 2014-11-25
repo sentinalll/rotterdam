@@ -11,8 +11,10 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
+
 /**
- * Created by vasax32 on 21.07.14.
+ * @author Roman
+ *
  */
 @Entity
 @Table(name = "SESSION")
@@ -73,13 +75,13 @@ public class Session implements HibernateL2Cache {
         //if nothing changed - exit
         if(sameAsBefore(user))
             return;
-        //setting new category
+        //setting new user
         User oldUser = this.user;
         this.user = user;
-        //remove user form old category
+        //remove user form old user
         if(oldUser != null)
             oldUser.removeSession(this);
-        //and add it to new category
+        //and add it to new user
         if(user != null)
             user.addSession(this);
     }

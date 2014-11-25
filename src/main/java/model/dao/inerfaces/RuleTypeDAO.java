@@ -1,7 +1,5 @@
 package model.dao.inerfaces;
 
-
-
 import java.util.List;
 
 import model.entity.RuleType;

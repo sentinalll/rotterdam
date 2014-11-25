@@ -13,7 +13,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import model.dao.impl.UserDAOImpl;
 import model.entity.User;
 
 import org.json.JSONException;
@@ -21,7 +20,6 @@ import org.json.JSONObject;
 
 import controllers.auth.CookieUtil;
 import tools.Factory;
-import tools.MD5Decoder;
 
 @Path("/")
 @PermitAll

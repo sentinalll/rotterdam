@@ -24,6 +24,7 @@ public class HibernateUtil {
 	}
 
 	public static Session getSession() throws HibernateException {
+		System.out.println("getHibernateSession");
 		return sessionFactory.openSession();
 	}
 

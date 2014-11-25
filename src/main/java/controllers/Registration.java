@@ -18,6 +18,7 @@ import model.entity.User;
 import org.json.JSONObject;
 
 import tools.Factory;
+import tools.SecuritySettings;
 
 @Path("/")
 @PermitAll
@@ -33,9 +34,9 @@ public class Registration {
 		user.setFirstname(registrationData.getString("Name"));
 		user.setSurname(registrationData.getString("LastName"));
 		user.setEmail(registrationData.getString("email"));
-		user.setPassword(registrationData.getString("pass"));
+		user.setPassword(SecuritySettings.code(registrationData.getString("pass")));
 		user.setRole(Factory.getInstance().getUserRoleDAO().selectById(4));
-		String confirmPassword = registrationData.getString("passconfirm");
+		String confirmPassword =SecuritySettings.code(registrationData.getString("passconfirm"));
 		if (checkPassword(user.getPassword(), confirmPassword)
 				&& checkEmail(user.getEmail())) {
 			Factory.getInstance().getUserDAO().insert(user);

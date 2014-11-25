@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import controllers.auth.CookieUtil;
 import tools.Factory;
+import tools.SecuritySettings;
 
 @Path("/")
 @PermitAll
@@ -34,9 +35,11 @@ public class AuthApplication {
 			@Context HttpServletResponse rspn, String data)
 			throws JSONException {
 		JSONObject loginData = new JSONObject(data);
-		User user = Factory.getInstance().getUserDAO()
+		User user = Factory
+				.getInstance()
+				.getUserDAO()
 				.getUserByEmailAndPassword(loginData.getString("login"),
-						loginData.getString("password"));
+						SecuritySettings.code(loginData.getString("password")));
 		if (user != null && cookieUtil.insertSessionUID(rspn, user))
 			return Response.ok().build();
 		else

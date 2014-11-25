@@ -44,7 +44,6 @@ public class Registration {
 		} else {
 			return Response.status(406).build();
 		}
-
 	}
 
 	private boolean checkPassword(String password, String confirmPassword) {

@@ -43,7 +43,7 @@ public class AuthApplication {
 		if (user != null && cookieUtil.insertSessionUID(rspn, user))
 			return Response.ok().build();
 		else
-			return Response.status(401).build();
+			return Response.status(Response.Status.UNAUTHORIZED).build();
 	}
 
 	@RolesAllowed({ "Driver" })
@@ -55,7 +55,7 @@ public class AuthApplication {
 		if (cookieUtil.removeSessionUID(hsr, rspn))
 			return Response.ok().build();
 		else
-			return Response.status(404).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 	}
 
 	@RolesAllowed("Admin")

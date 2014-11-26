@@ -18,7 +18,7 @@
         });
         $("#btn-forgot-password").click(function fogotButton() { 
            var Fogot_pass = {
-             email_forgot: $('#inputForgotPassword').val()
+             email_fogot: $('#inputForgotPassword').val()   
            };
           fogotPass(Fogot_pass);
         });
@@ -35,10 +35,9 @@
                     200: function () {
                         alert("Success...");
                     },
-                    401: function () {
-                        alert("This email not registered");
+                    401: function(){
+                        alert("Invalid email");
                     }
-
                 }
             });
         };
@@ -90,6 +89,8 @@
 //                              }
 //                          }
 //                      });
+                      var url = "client_page.html";
+                      $(location).attr('href',url);
                   },
                   401: function () {
                       alert("Invalid login or password");

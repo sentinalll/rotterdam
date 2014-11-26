@@ -45,7 +45,6 @@ public class SecurityInterceptor implements
 					// Load session object from repository
 					session = Factory.getInstance().getSessionDAO()
 							.selectBySessionId(sessionId);
-					// Load associated user from session
 					if (null != session) {
 						checkRoleAllowed(request, session);
 						session.setLastAccessedTime(new Timestamp(Calendar
@@ -80,11 +79,14 @@ public class SecurityInterceptor implements
 
 		}
 		// Access denied for all
-		if (method.isAnnotationPresent(DenyAll.class)) {
-			request.abortWith(ACCESS_FORBIDDEN);
-		}
+		checkAnnotationDeny(request, method);
 
 		// Verify user access
+		checkAnnotationRolesAllowed(request, session, method);
+	}
+
+	private void checkAnnotationRolesAllowed(ContainerRequestContext request,
+			Session session, Method method) {
 		if (method.isAnnotationPresent(RolesAllowed.class)) {
 			RolesAllowed rolesAnnotation = method
 					.getAnnotation(RolesAllowed.class);
@@ -94,6 +96,13 @@ public class SecurityInterceptor implements
 			if (!isUserAllowed(session.getUser(), rolesSet)) {
 				request.abortWith(ACCESS_DENIED);
 			}
+		}
+	}
+
+	private void checkAnnotationDeny(ContainerRequestContext request,
+			Method method) {
+		if (method.isAnnotationPresent(DenyAll.class)) {
+			request.abortWith(ACCESS_FORBIDDEN);
 		}
 	}
 

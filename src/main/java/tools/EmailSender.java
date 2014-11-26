@@ -14,16 +14,17 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
 
-	public static boolean sendForgotPassword(String toAddress, String password) {
+    public static final String COMPANY_MAIL_ADDRESS = "noreply.drivertools@gmail.com";
+    public static final String COMPANY_MAIL_PASSWORD = "rotterdam2014";
+
+    public static boolean sendForgotPassword(String name, String toAddress, String password) {
 		try {
 			String host = "smtp.gmail.com";
-			String from = "";
-			String pass = "";
+			String from = COMPANY_MAIL_ADDRESS;
+			String pass = COMPANY_MAIL_PASSWORD;
 			Properties props = System.getProperties();
 			props.put("mail.smtp.starttls.enable", "true");
 			props.put("mail.smtp.host", host);
-			// props.put("mail.smtp.user", from);
-			// props.put("mail.smtp.password", pass);
 			props.put("mail.smtp.port", "587");
 			props.put("mail.smtp.auth", "true");
 			props.put("mail.debug", "true");
@@ -35,8 +36,8 @@ public class EmailSender {
 			message.setFrom(fromAddress);
 			message.setRecipient(Message.RecipientType.TO, to);
 			message.setSubject("Forget Password");
-			message.setText("Hi, it's test email from drivertools programm. Hello from Holland!!!. Your password "
-					+ password);
+			message.setText("Hi " + name + ", " +"\n" + "Your password is "
+					+ password + "\n\n" + "Best regards," + "\n" + "Comes Solution");
 			Transport transport = session.getTransport("smtp");
 			transport.connect(host, from, pass);
 			message.saveChanges();

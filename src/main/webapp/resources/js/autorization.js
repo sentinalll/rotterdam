@@ -18,7 +18,7 @@
         });
         $("#btn-forgot-password").click(function fogotButton() { 
            var Fogot_pass = {
-             email_fogot: $('#inputForgotPassword').val()   
+             email_forgot: $('#inputForgotPassword').val()
            };
           fogotPass(Fogot_pass);
         });
@@ -34,7 +34,11 @@
                 statusCode: {
                     200: function () {
                         alert("Success...");
+                    },
+                    401: function () {
+                        alert("This email not registered");
                     }
+
                 }
             });
         };

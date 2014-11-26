@@ -34,6 +34,9 @@
                 statusCode: {
                     200: function () {
                         alert("Success...");
+                    },
+                    401: function(){
+                        alert("Invalid email");
                     }
                 }
             });

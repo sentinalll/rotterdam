@@ -89,6 +89,8 @@
 //                              }
 //                          }
 //                      });
+                      var url = "client_page.html";
+                      $(location).attr('href',url);
                   },
                   401: function () {
                       alert("Invalid login or password");

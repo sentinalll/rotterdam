@@ -16,15 +16,15 @@
             };
             addUser(User);
         });
-        $("#btn-forgot-password").click(function fogotButton() { 
-           var Fogot_pass = {
-             email_fogot: $('#inputForgotPassword').val()   
+        $("#btn-forgot-password").click(function forgotButton() { 
+           var Forgot_pass = {
+             email_forgot: $('#inputForgotPassword').val()   
            };
-          fogotPass(Fogot_pass);
+          forgotPass(Forgot_pass);
         });
     });
 
-        function fogotPass(data) {// pass your data in method
+        function forgotPass(data) {// pass your data in method
             $.ajax({
                 type: "POST",
                 url: "api/restore",

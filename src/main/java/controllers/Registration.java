@@ -23,7 +23,10 @@ import tools.SecuritySettings;
 @Path("/")
 @PermitAll
 public class Registration {
-	@POST
+
+    public static final int PARAM_ROLE_ID = 3;  // 1- Admin, 2 - Moderator, 3 - Driver, 4 - Unpaid
+
+    @POST
 	@Path("/registration")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response registerNewUser(@Context HttpServletRequest hsr,
@@ -35,7 +38,7 @@ public class Registration {
 		user.setSurname(registrationData.getString("LastName"));
 		user.setEmail(registrationData.getString("email"));
 		user.setPassword(SecuritySettings.code(registrationData.getString("pass")));
-		user.setRole(Factory.getInstance().getUserRoleDAO().selectById(4));
+		user.setRole(Factory.getInstance().getUserRoleDAO().selectById(PARAM_ROLE_ID));
 		String confirmPassword =SecuritySettings.code(registrationData.getString("passconfirm"));
 		if (checkPassword(user.getPassword(), confirmPassword)
 				&& checkEmail(user.getEmail())) {

@@ -1,6 +1,5 @@
 package model.entity;
 
-
 import model.dao.inerfaces.HibernateL2Cache;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -16,82 +15,67 @@ import java.util.List;
 /**
  */
 @Entity
-@Table(name="USERROLE")
+@Table(name = "USERROLE")
 public class UserRole implements HibernateL2Cache {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUserRole;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idUserRole;
 
-    private String name;
+	private String name;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
-    private List<User> userList;
+	@JsonIgnore
+	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+	private List<User> userList;
 
-    @JsonIgnore
-    @ManyToMany()
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinTable(name = "RoleRule",
-            joinColumns = {@JoinColumn(name = "idUserRole")},
-            inverseJoinColumns = {@JoinColumn(name = "idRuleType")})
-    private List<RuleType> rules;
+	public int getIdUserRole() {
+		return idUserRole;
+	}
 
-    public int getIdUserRole() {
-        return idUserRole;
-    }
+	public void setIdUserRole(int idUserRole) {
+		this.idUserRole = idUserRole;
+	}
 
-    public void setIdUserRole(int idUserRole) {
-        this.idUserRole = idUserRole;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	@JsonIgnore
+	public ArrayList<User> getUserList() {
+		return new ArrayList<User>(userList);
+	}
 
-    @JsonIgnore
-    public ArrayList<User> getUserList(){
-        return new ArrayList<User>(userList);
-    }
+	@Override
+	public String toString() {
+		return "UserRole{" + "idUserRole" + idUserRole + ", name='" + name
+				+ "'" + "}";
+	}
 
-   
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 
-    @JsonIgnore
-    public List<RuleType> getRules() {
-        return rules;
-    }
+		UserRole that = (UserRole) o;
 
-  
-    @Override
-    public String toString() {
-        return "UserRole{" +
-                "idUserRole" + idUserRole +
-                ", name='" + name + '\'' +
-                ", rules='" + rules + '\'' +
-                '}';
-    }
+		if (idUserRole != that.idUserRole)
+			return false;
+		if (!name.equals(that.name))
+			return false;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+		return true;
+	}
 
-        UserRole that = (UserRole) o;
-
-        if (idUserRole != that.idUserRole) return false;
-        if (!name.equals(that.name)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idUserRole;
-        result = 31 * result + name.hashCode();
-        return result;
-    }
+	@Override
+	public int hashCode() {
+		int result = idUserRole;
+		result = 31 * result + name.hashCode();
+		return result;
+	}
 }

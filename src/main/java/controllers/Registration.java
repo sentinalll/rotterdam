@@ -28,22 +28,26 @@ public class Registration {
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response registerNewUser(@Context HttpServletRequest hsr,
 			@Context HttpServletResponse rspn, String data) {
-
 		JSONObject registrationData = new JSONObject(data);
-		User user = new User();
-		user.setFirstname(registrationData.getString("Name"));
-		user.setSurname(registrationData.getString("LastName"));
-		user.setEmail(registrationData.getString("email"));
-		user.setPassword(SecuritySettings.code(registrationData.getString("pass")));
-		user.setRole(Factory.getInstance().getUserRoleDAO().selectById(4));
+		User user = createUser(registrationData);
 		String confirmPassword =SecuritySettings.code(registrationData.getString("passconfirm"));
 		if (checkPassword(user.getPassword(), confirmPassword)
 				&& checkEmail(user.getEmail())) {
 			Factory.getInstance().getUserDAO().insert(user);
 			return Response.ok().build();
 		} else {
-			return Response.status(406).build();
+			return Response.status(Response.Status.NOT_ACCEPTABLE).build();
 		}
+	}
+
+	private User createUser(JSONObject registrationData) {
+		User user = new User();
+		user.setFirstname(registrationData.getString("Name"));
+		user.setSurname(registrationData.getString("LastName"));
+		user.setEmail(registrationData.getString("email"));
+		user.setPassword(SecuritySettings.code(registrationData.getString("pass")));
+		user.setRole(Factory.getInstance().getUserRoleDAO().selectById(4));
+		return user;
 	}
 
 	private boolean checkPassword(String password, String confirmPassword) {

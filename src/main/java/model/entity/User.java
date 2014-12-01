@@ -19,6 +19,7 @@ public class User implements Principal, HibernateL2Cache {
 	@Id
 	@GeneratedValue
 	private long id;
+	
 	private String firstname;
 	private String surname;
 	private String zipcode;
@@ -26,7 +27,7 @@ public class User implements Principal, HibernateL2Cache {
 	private String password;
 
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idUserRole")
 	private UserRole role;
 
@@ -130,7 +131,7 @@ public class User implements Principal, HibernateL2Cache {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + firstname + ", surname="
-				+ surname + ", zipcode=" + zipcode + ", email=" + email
+				+ surname + ", zipcode=" + zipcode + ", email=" + email + ", role=" + role.getName()
 				+ ", password=" + password + "]";
 	}
 

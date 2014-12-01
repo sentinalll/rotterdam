@@ -95,7 +95,6 @@ public class Session implements HibernateL2Cache {
     public String toString() {
         return "Session{" +
                 "  sessionId='" + sessionId + '\'' +
-                //", IdUser=" + IdUser +
                 ", createTime=" + createTime +
                 ", lastAccessedTime=" + lastAccessedTime +
                 '}';

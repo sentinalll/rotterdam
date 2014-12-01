@@ -9,6 +9,5 @@ import tools.Factory;
  */
 @ApplicationPath("/api")
 public class Application extends javax.ws.rs.core.Application{
-	tools.Factory factory = Factory.getInstance();
 }
 

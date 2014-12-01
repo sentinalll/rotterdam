@@ -40,10 +40,11 @@ public class AuthApplication {
 				.getUserDAO()
 				.getUserByEmailAndPassword(loginData.getString("login"),
 						SecuritySettings.code(loginData.getString("password")));
-		if (user != null && cookieUtil.insertSessionUID(rspn, user))
+		if (user != null && cookieUtil.insertSessionUID(rspn, user)) {
 			return Response.ok().build();
-		else
+		} else {
 			return Response.status(401).build();
+		}
 	}
 
 	@RolesAllowed({ "Driver" })

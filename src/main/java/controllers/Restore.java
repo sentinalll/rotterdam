@@ -15,24 +15,19 @@ import org.json.JSONObject;
 import tools.EmailSender;
 import tools.Factory;
 import tools.SecuritySettings;
+import tools.json.JsonCommands;
 
 @Path("/")
 @PermitAll
 public class Restore {
 
-    public static final String PARAM_EMAIL_FORGOT = "email_forgot";
 
     @POST
 	@Path("/restore")
 	@Consumes({ MediaType.APPLICATION_JSON })
 	public Response restorePassword(@Context HttpServletRequest hsr,
 			@Context HttpServletResponse rspn, String data) {
-        JSONObject loginData = new JSONObject(data);
-        User user = Factory
-                .getInstance()
-                .getUserDAO()
-                .selectByEmail(loginData.getString(PARAM_EMAIL_FORGOT));
-        System.out.println(user);
+        User user = JsonCommands.getRestoreData(data);
         if (user != null && user.getEmail() != null){
             EmailSender.sendForgotPassword(user.getFirstname(), user.getEmail(), SecuritySettings.decode(user.getPassword()));
             return Response.ok().build();

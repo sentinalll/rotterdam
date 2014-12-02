@@ -24,12 +24,12 @@ import javax.ws.rs.core.Response;
 @PermitAll
 public class TimeCompensation {
 
-    @RolesAllowed({ "Driver" })
+    //@RolesAllowed({ "Driver" })
     @POST
     @Path("/timecompensation")
-    @Consumes({ MediaType.APPLICATION_JSON })
+    //@Consumes({ MediaType.APPLICATION_JSON })
     @Produces({MediaType.APPLICATION_JSON})
-    public Response restorePassword(@Context HttpServletRequest hsr ) throws JsonException {
+    public Response getCompensatedTime(@Context HttpServletRequest hsr ) throws JsonException {
         JsonObject jsonData = JsonUtil.getUserCompensatedTime(hsr);
 
         if (jsonData != null){

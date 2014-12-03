@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Admin on 01.12.14.
+ * @author Anatolii
  */
 public class JsonCommands {
 

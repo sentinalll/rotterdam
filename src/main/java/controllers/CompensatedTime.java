@@ -4,7 +4,8 @@ package controllers;
  * Created by Vasya on 02.12.2014.
  */
 
-import tools.JsonUtil;
+
+import tools.json.JsonCommands;
 
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
@@ -22,15 +23,15 @@ import javax.ws.rs.core.Response;
 
 @Path("/")
 @PermitAll
-public class TimeCompensation {
+public class CompensatedTime {
 
-    //@RolesAllowed({ "Driver" })
+    @RolesAllowed({ "Driver" })
     @POST
-    @Path("/timecompensation")
+    @Path("/cmptime")
     //@Consumes({ MediaType.APPLICATION_JSON })
     @Produces({MediaType.APPLICATION_JSON})
     public Response getCompensatedTime(@Context HttpServletRequest hsr ) throws JsonException {
-        JsonObject jsonData = JsonUtil.getUserCompensatedTime(hsr);
+        JsonObject jsonData = JsonCommands.getUserCompensatedTime(hsr);
 
         if (jsonData != null){
             return Response.ok(jsonData).build();

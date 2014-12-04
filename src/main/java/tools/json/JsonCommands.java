@@ -21,6 +21,9 @@ public class JsonCommands {
     public static final String PARAM_FIRSTNAME = "firstname";
     public static final String PARAM_DATE = "date";
     public static final String PARAM_EMAIL_FORGOT = "email_forgot";
+    public static final String PARAM_AVL_TIME = "avl_time";
+    public static final String PARAM_USED_TIME = "used_time";
+
 
     private JsonCommands(){}
 
@@ -62,6 +65,34 @@ public class JsonCommands {
         } else {
             return null;
         }
+
+    }
+
+    /**
+     *
+     * @param hsr
+     * @return Jsonobject
+     * @throws JsonException
+     */
+
+    public static JsonObject getUserCompensatedTime(HttpServletRequest hsr) throws JsonException {
+        CookieUtil cookieUtil = new CookieUtil();
+        User user = Factory
+                .getInstance()
+                .getSessionDAO()
+                .selectBySessionId(cookieUtil.getSessionIdFromRequest(hsr))
+                .getUser();
+        if (user != null) {
+            JsonObject jsonCompensationTime = Json.createObjectBuilder()
+                    .add(PARAM_FIRSTNAME, user.getFirstname() + ' ' + user.getSurname())
+                    .add(PARAM_AVL_TIME,"available time")
+                    .add(PARAM_USED_TIME,"used time")
+                    .build();
+            return jsonCompensationTime;
+        } else {
+            return null;
+        }
+
 
     }
 

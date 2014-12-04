@@ -4,5 +4,8 @@ target
 !.settings/.jsdtscope
 .project
 .classpath
+.idea
+.iml
+
 /.tern-project
 

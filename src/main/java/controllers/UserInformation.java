@@ -7,9 +7,9 @@ import javax.annotation.security.RolesAllowed;
 import javax.json.JsonException;
 import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -21,8 +21,8 @@ public class UserInformation {
     @RolesAllowed({ "Driver" })
     @POST
     @Path("/home")
-    @Consumes({ MediaType.APPLICATION_JSON })
-    public Response restorePassword(@Context HttpServletRequest hsr ) throws JsonException {
+    @Produces({ MediaType.APPLICATION_JSON })
+    public Response getInfo(@Context HttpServletRequest hsr ) throws JsonException {
         JsonObject jsonData = JsonCommands.getUserHomeData(hsr);
         if (jsonData != null){
             return Response.ok(jsonData).build();

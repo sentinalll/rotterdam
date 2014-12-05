@@ -46,7 +46,7 @@
         <div class="well well-sm">
             <dl class="dl-horizontal margin_fix">
               <dt>Name:</dt>
-              <dd>Vasya</dd>
+              <dd id="username"></dd>
             </dl>
         </div>
         <div class="well well-sm">
@@ -58,9 +58,10 @@
         <div class="well well-sm">
             <dl class="dl-horizontal margin_fix">
               <dt>Date:</dt>
-              <dd>20.11.2014</dd>
+              <dd id="userdate"></dd>
             </dl>
         </div>
+                <button class="btn btn-success" onclick="userInfo()">Получить данные</button>
   </div>
   <div class="tab-pane" id="profile">
 
@@ -89,15 +90,13 @@
 			</div>
 			</div>
 		</div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="js/jquery-2.1.1.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
      <script src="resources/js/jquery-2.1.1.min.js"></script>
      <script src="resources/js/bootstrap.min.js"></script>
      <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
      <script src="resources/js/angular-strap.min.js"></script>
      <script src="resources/js/angular-strap.tpl.min.js"></script>
      <script src="resources/js/validator.js"></script>
+     <script src="resources/js/userdata.js"></script>
      <script src="resources/js/autorization.js"></script>
   </body>
 </html>

@@ -49,9 +49,10 @@ CREATE TABLE `RULETYPE` (
   UNIQUE KEY `idRuleType_UNIQUE` (`idRuleType`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `ROLERULE`;
+DROP TABLE IF EXISTS `RoleRule`;
 
-CREATE TABLE `ROLERULE` (
+
+CREATE TABLE `RoleRule` (
   `idRoleRule` int(11) NOT NULL AUTO_INCREMENT,
   `idRuleType` int(11) DEFAULT NULL,
   `idUserRole` int(11) DEFAULT NULL,
@@ -63,3 +64,18 @@ CREATE TABLE `ROLERULE` (
   CONSTRAINT `idUserCategoty` FOREIGN KEY (`idUserRole`) REFERENCES `USERROLE` (`idUserRole`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `idRuleType` FOREIGN KEY (`idRuleType`) REFERENCES `RULETYPE` (`idRuleType`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `WORKHOURS`;
+CREATE TABLE `WORKHOURS` (
+  `idWorkHours` bigint(20) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `startWorkingTime` time NOT NULL,
+  `endWorkingTime` time NOT NULL,
+  `restTime` int(11) NOT NULL,
+  `rideType` varchar(255) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  PRIMARY KEY (`idWorkHours`),
+  UNIQUE KEY `idWorkHours_UNIQUE` (`idWorkHours`),
+  KEY `fk_workhours_user` (`idUser`),
+  CONSTRAINT `fk_workhours_user` FOREIGN KEY (`idUser`) REFERENCES `USER` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;

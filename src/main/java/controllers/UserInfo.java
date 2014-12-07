@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 
 @Path("/")
 @PermitAll
-public class UserInformation {
+public class UserInfo {
 
     @RolesAllowed({ "Driver" })
     @POST

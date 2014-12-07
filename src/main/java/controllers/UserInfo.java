@@ -27,7 +27,7 @@ public class UserInfo {
         if (jsonData != null){
             return Response.ok(jsonData).build();
         } else {
-            return Response.status(401).build();
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
 

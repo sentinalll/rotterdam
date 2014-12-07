@@ -32,7 +32,7 @@ public class WeeklyRouteInfo {
         if (workHours != null && Factory.getInstance().getWorkHoursDAO().insert(workHours)) {
             return Response.ok().build();
         } else {
-            return Response.status(406).build();
+            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
         }
 
     }
@@ -46,7 +46,7 @@ public class WeeklyRouteInfo {
         if (jsonData != null){
             return Response.ok(jsonData).build();
         } else {
-            return Response.status(401).build();
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         }
     }
 }

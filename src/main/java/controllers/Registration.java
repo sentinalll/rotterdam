@@ -45,7 +45,7 @@ public class Registration {
 			Factory.getInstance().getUserDAO().insert(user);
 			return Response.ok().build();
 		} else {
-			return Response.status(406).build();
+			return Response.status(Response.Status.NOT_ACCEPTABLE).build();
 		}
 	}
 

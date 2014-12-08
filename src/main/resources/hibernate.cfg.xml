@@ -11,5 +11,6 @@
 		<mapping class="model.entity.Session" />
 		<mapping class="model.entity.RuleType" />
 		<mapping class="model.entity.UserRole" />
+        <mapping class="model.entity.WorkHours" />
 	</session-factory>
 </hibernate-configuration>

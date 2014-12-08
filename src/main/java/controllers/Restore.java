@@ -32,7 +32,7 @@ public class Restore {
             EmailSender.sendForgotPassword(user.getFirstname(), user.getEmail(), SecuritySettings.decode(user.getPassword()));
             return Response.ok().build();
         } else {
-            return Response.status(401).build();
+            return Response.status(Response.Status.UNAUTHORIZED).build();
         }
 	}
 

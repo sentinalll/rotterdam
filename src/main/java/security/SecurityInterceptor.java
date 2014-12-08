@@ -74,17 +74,25 @@ public class SecurityInterceptor implements
 		ResourceMethodInvoker methodInvoker = (ResourceMethodInvoker) request
 				.getProperty("org.jboss.resteasy.core.ResourceMethodInvoker");
 		Method method = methodInvoker.getMethod();
+		checkAllowedForAll(method);
+		checkDenyAll(request, method);
+		checkRolesAllowed(request, session, method);
+	}
 
-		// Access allowed for all
+	private void checkAllowedForAll(Method method) {
 		if (method.isAnnotationPresent(PermitAll.class)) {
 
 		}
-		// Access denied for all
+	}
+
+	private void checkDenyAll(ContainerRequestContext request, Method method) {
 		if (method.isAnnotationPresent(DenyAll.class)) {
 			request.abortWith(ACCESS_FORBIDDEN);
 		}
+	}
 
-		// Verify user access
+	private void checkRolesAllowed(ContainerRequestContext request,
+			Session session, Method method) {
 		if (method.isAnnotationPresent(RolesAllowed.class)) {
 			RolesAllowed rolesAnnotation = method
 					.getAnnotation(RolesAllowed.class);

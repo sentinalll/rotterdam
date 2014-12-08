@@ -42,7 +42,7 @@
             });
         };
       
-        function addUser(data) {// pass your data in method
+        function addUser(data) {
             
             $.ajax({
                 type: "POST",
@@ -71,7 +71,27 @@
               dataType: "json",
               statusCode: {
                   200: function () {
-                      alert("Login success");
+//                        userInfo();
+                      location.href='client_page.html';
+//                     document.location = "client_page.html";
+//                  function userInfo(data){
+//                    var userinfo = $.ajax({
+//                        //data: str,
+//                        type: "POST",
+//                        url: "api/home",
+//                        datatype: "json",
+//                        contentType: "application/json",
+////                      success: function(data) {
+//                        statusCode: {
+//                        200: function () {
+//                        alert("ok");
+//                        console.log(data);
+//                        alert(userinfo);
+//            }
+//                        }
+//                    });
+       
+//                      alert("Login success");
 //                      $.ajax({
 //                          //data: str,
 //                          type: "POST",
@@ -89,8 +109,50 @@
 //                              }
 //                          }
 //                      });
-                      var url = "client_page.html";
-                      $(location).attr('href',url);
+//                      window.location.href = "client_page.html";
+//                      var url = "client_page.html";
+//                      $(location).attr('href',url);
+//                      if(window.location.hash == 'client_page.html') {
+//                      function userInfo(data){
+//                       $.ajax({
+//                        //data: str,
+//                        type: "POST",
+//                        url: "api/home",
+//                        datatype: "json",
+//                        contentType: "application/json",
+////                      success: function(data) {
+//                        statusCode: {
+//                        200: function () {
+//                        alert("ok");
+////                        console.log(data);
+//                        alert(userinfo);
+//            }
+//                        }
+//                    });
+//        }                        
+//                      $(document).ready(function(){
+//                      userInfo(data);   
+//                      });
+
+//                      $(window).load(function() {
+//                        function userInfo(){
+//                        var userinfo = $.ajax({
+//                        //data: str,
+//                        type: "POST",
+//                        url: "api/home",
+//                        datatype: "json",
+//                        contentType: "application/json",
+////                      success: function(data) {
+//                        statusCode: {
+//                        200: function () {
+//                        alert("ok");
+//                        console.log(data);
+//                        alert(userinfo);
+//            }
+//                        }
+//                    });
+//        }
+//                        });
                   },
                   401: function () {
                       alert("Invalid login or password");
@@ -98,5 +160,20 @@
               }
           });
       }
-
-     
+//        function userInfo(data){
+//                        var userinfo = $.ajax({
+//                        //data: str,
+//                        type: "POST",
+//                        url: "api/home",
+//                        datatype: "json",
+//                        contentType: "application/json",
+////                      success: function(data) {
+//                        statusCode: {
+//                        200: function () {
+//                        alert("ok");
+////                        console.log(data);
+//                        alert(userinfo);
+//            }
+//                        }
+//                    });
+//        }

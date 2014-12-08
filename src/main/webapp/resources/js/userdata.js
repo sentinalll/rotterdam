@@ -16,7 +16,6 @@
              $.ajax({
               type: "POST",
               url: "api/logout",
-              data: JSON.stringify(data),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
               statusCode: {

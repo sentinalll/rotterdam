@@ -28,20 +28,6 @@ import javax.ws.rs.core.Response;
 @PermitAll
 public class TimeForTime {
 
-    @RolesAllowed({ "Driver" })
-    @POST
-    @Path("/timefortime")
-    //@Consumes({ MediaType.APPLICATION_JSON })
-    @Produces({MediaType.APPLICATION_JSON})
-    public Response getTimeForTime(@Context HttpServletRequest hsr ) throws JsonException {
-        JsonObject jsonData = JsonCommands.getTimeForTimeHours(hsr);
-
-        if (jsonData != null){
-            return Response.ok(jsonData).build();
-        } else {
-            return Response.status(401).build();
-        }
-    }
 
     @RolesAllowed({ "Driver" })
     @POST
@@ -52,7 +38,7 @@ public class TimeForTime {
         JSONObject useTimeForTimeData = new JSONObject(data);
         long useTimeForTimeHours = useTimeForTimeData.getLong("useTimeForTimeHours");
 
-        //TODO:work with db, update avaliable time-for-time hours, Somehow use used hours as a free time
+        //TODO:work with db, update available time-for-time hours, Somehow use used hours as a free time
 
         JsonObject jsonData = JsonCommands.getTimeForTimeHours(hsr);
 

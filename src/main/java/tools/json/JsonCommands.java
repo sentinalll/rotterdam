@@ -95,7 +95,7 @@ public class JsonCommands {
             //TODO: Implement real request to db and data retrieval
             JsonObject jsonAvaliableTimeForTime = Json.createObjectBuilder()
                     .add(PARAM_FIRSTNAME, user.getFirstname() + ' ' + user.getSurname())
-                    .add(PARAM_AVL_TIME_FOR_TIME,"available time-for-time")
+                    .add(PARAM_AVL_TIME_FOR_TIME,"updated available time-for-time")
                     .build();
             return jsonAvaliableTimeForTime;
         } else {

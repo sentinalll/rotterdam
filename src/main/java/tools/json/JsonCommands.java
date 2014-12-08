@@ -85,7 +85,7 @@ public class JsonCommands {
      */
 
     public static JsonObject getTimeForTimeHours(HttpServletRequest hsr) throws JsonException {
-        CookieUtil cookieUtil = new CookieUtil();
+        CookieUtil cookieUtil = new CookieUtil(dfs);
         User user = Factory
                 .getInstance()
                 .getSessionDAO()

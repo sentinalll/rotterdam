@@ -4,6 +4,9 @@
 .margin_bottom_10{
     margin-bottom: 10px;
 }
+.margin_bottom_5{
+    margin-bottom: 5px;
+}
 .margin_fix{
     margin: 0;
 }
@@ -72,4 +75,7 @@ hr {
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #eee;
+}
+.time_tab div{
+    margin-bottom:10px;
 }

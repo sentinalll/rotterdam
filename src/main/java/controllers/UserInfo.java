@@ -13,6 +13,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.text.ParseException;
 
 @Path("/")
 @PermitAll
@@ -22,8 +23,10 @@ public class UserInfo {
     @POST
     @Path("/home")
     @Produces({ MediaType.APPLICATION_JSON })
-    public Response getInfo(@Context HttpServletRequest hsr ) throws JsonException {
-        JsonObject jsonData = JsonCommands.getUserHomeData(hsr);
+    public Response getInfo(@Context HttpServletRequest hsr ) throws JsonException, ParseException {
+//        JsonObject jsonData = JsonCommands.getUserHomeData(hsr);
+        JsonObject jsonData = JsonCommands.getInitAfterLoginData(hsr);
+        System.out.println(jsonData);
         if (jsonData != null){
             return Response.ok(jsonData).build();
         } else {

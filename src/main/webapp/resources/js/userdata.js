@@ -21,7 +21,7 @@
               statusCode: {
                   200: function () {
                       location.href='index.html';
-                  },
+                  }
               }
           });
         });

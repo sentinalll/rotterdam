@@ -25,7 +25,6 @@ public class JsonCommands {
     public static final String PARAM_DATE = "date";
     public static final String PARAM_EMAIL_FORGOT = "email_forgot";
     public static final String PARAM_AVL_TIME_FOR_TIME = "avl_time_for_time";
-    public static final String USE_TIME_FOR_TIME = "use_time_for_time";
     public static final String PARAM_START_WORKING_TIME = "startWorkingTime";
     public static final String PARAM_END_WORKING_TIME = "endWorkingTime";
     public static final String PARAM_RIDE_TYPE = "rideType";
@@ -79,13 +78,13 @@ public class JsonCommands {
 
     /**
      *
-     * @param hsr
-     * @return Jsonobject containing avaliable time-for-time hours
+     * @param hsr, useHours.
+     * @return Jsonobject containing avaliable time-for-time hours after subtraction of used hours
      * @throws JsonException
      */
 
-    public static JsonObject getTimeForTimeHours(HttpServletRequest hsr) throws JsonException {
-        CookieUtil cookieUtil = new CookieUtil(dfs);
+    public static JsonObject getTimeForTimeHours(HttpServletRequest hsr, Long useHours) throws JsonException {
+        CookieUtil cookieUtil = new CookieUtil();
         User user = Factory
                 .getInstance()
                 .getSessionDAO()
@@ -94,8 +93,7 @@ public class JsonCommands {
         if (user != null) {
             //TODO: Implement real request to db and data retrieval
             JsonObject jsonAvaliableTimeForTime = Json.createObjectBuilder()
-                    .add(PARAM_FIRSTNAME, user.getFirstname() + ' ' + user.getSurname())
-                    .add(PARAM_AVL_TIME_FOR_TIME,"updated available time-for-time")
+                    .add(PARAM_AVL_TIME_FOR_TIME,"available time-for-time minus " + useHours)
                     .build();
             return jsonAvaliableTimeForTime;
         } else {

@@ -36,11 +36,11 @@ public class TimeForTime {
     @Produces({MediaType.APPLICATION_JSON})
     public Response useTime(@Context HttpServletRequest hsr, @Context HttpServletResponse rspn, String data) throws JsonException {
         JSONObject useTimeForTimeData = new JSONObject(data);
-        long useTimeForTimeHours = useTimeForTimeData.getLong("useTimeForTimeHours");
+        Long useHours = useTimeForTimeData.getLong("use_time_for_time");
 
         //TODO:work with db, update available time-for-time hours, Somehow use used hours as a free time
 
-        JsonObject jsonData = JsonCommands.getTimeForTimeHours(hsr);
+        JsonObject jsonData = JsonCommands.getTimeForTimeHours(hsr, useHours);
 
         if (jsonData != null){
             return Response.ok(jsonData).build();

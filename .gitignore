@@ -5,7 +5,13 @@ target
 .project
 .classpath
 .idea
-.iml
+*.iml
+.openshift
+.settings
+/deployments
+.gitignore
+
 
 /.tern-project
+
 

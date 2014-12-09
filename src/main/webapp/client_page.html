@@ -28,9 +28,9 @@
   <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
   <li><a href="#Time" role="tab" data-toggle="tab">Time</a></li>
   <li><a href="#compensation" role="tab" data-toggle="tab">Compensation</a></li>
-  <li><a href="#settings" role="tab" data-toggle="tab">Payment time</a></li>
-  <li><a href="#profile" role="tab" data-toggle="tab">Overview</a></li>
-  <li><a href="#messages" role="tab" data-toggle="tab">Declaration</a></li>
+  <li><a href="#payment_time" role="tab" data-toggle="tab">Payment time</a></li>
+  <li><a href="#sheet_overview" role="tab" data-toggle="tab">Overview</a></li>
+  <li><a href="#declaretion" role="tab" data-toggle="tab">Declaration</a></li>
   <li><a href="#settings" role="tab" data-toggle="tab">Settings </a></li>
 <!--
   <li><a href="#profile" role="tab" data-toggle="tab">Учитель</a></li>
@@ -66,14 +66,14 @@
   </div>
   <div class="tab-pane" id="Time">
    <div class="row col-xs-12">
-   <div class="col-md-2 col-xs-6">
+   <div class="col-md-2 col-xs-6 margin_bottom_10">
     <select class="form-control">
   <option>2014</option>
   <option>2015</option>
   <option>2016</option>
     </select>
     </div>
-      <div class="col-md-2 col-xs-6">
+      <div class="col-md-2 col-xs-6 margin_bottom_10">
     <select class="form-control">
   <option>January</option>
   <option>February</option>
@@ -89,7 +89,7 @@
   <option>December</option>
     </select>
     </div>
-   <div class="col-md-2 col-xs-6">
+   <div class="col-md-2 col-xs-12 margin_bottom_10">
     <select class="form-control">
   <option>Week 1</option>
   <option>Week 2</option>
@@ -285,15 +285,191 @@
               <dd>23</dd>
             </dl>
         </div>
-        <div class="well well-sm">
+              <div class="input-group col-md-8">
+                <span class="input-group-addon">$</span>
+                <input type="text" class="form-control" placeholder="Use time-for-time">
+              </div>
+      <button class="btn btn-success margin_top_10 col-md-1">Save</button>
+  </div>
+    <div class="tab-pane" id="payment_time">
+              <div class="well well-sm">
             <dl class="dl-horizontal margin_fix">
-              <dt>Use time-for-time:</dt>
-              <dd id="userdate"></dd>
+              <dt>Name:</dt>
+              <dd id="username"></dd>
             </dl>
         </div>
-  </div>
-  <div class="tab-pane" id="settings">
+        <div class="well well-sm">
+            <dl class="dl-horizontal margin_fix">
+              <dt>Avaliable time-to-pay:</dt>
+              <dd>23</dd>
+            </dl>
+        </div>
+             <div class="col-md-12 padding_fix">
+             <div class="col-md-4 padding_fix">
+               <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input type="text" class="form-control" placeholder="Hour to pay">
+              </div>
+             </div>
 
+
+<!--
+            <dl class="dl-horizontal margin_fix col-md-3 col-md-offset-1">
+              <dt>Avaliable time-to-pay:</dt>
+              <dd>23</dd>
+            </dl>
+-->
+                <div class="col-md-4 col-md-offset-3">
+                  <p class="font_size_18">Avaliable time-to-pay: <span>23</span></p>
+                </div>
+            </div>
+             
+      <button class="btn btn-success margin_top_15 col-md-1">Save</button>
+  </div>
+    <div class="tab-pane" id="sheet_overview">
+    <div class="col-md-12">
+    <div class="col-md-6">            
+        <p class="font_size_18">Avaliable time-to-pay: <span>23</span></p>
+    </div>
+    </div>
+    <div class="col-md-12">
+    <div class="col-md-4">
+        <select multiple class="form-control">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+        </select>
+    </div>
+    <div class="col-md-6 col-md-offset-1">
+        <p class="font_size_18">Avaliable time-to-pay: <span>23</span></p>
+        <p class="font_size_18">Avaliable time-to-pay: <span>23</span></p>
+        <p class="font_size_18">Avaliable time-to-pay: <span>23</span></p>
+        <p class="font_size_18">Avaliable time-to-pay: <span>23</span></p>
+    </div>
+         <div class="col-md-12">
+          <button class="btn btn-warning margin_top_15 col-md-1">Download PDF</button>
+         </div>
+    </div>
+  </div>
+   <div class="tab-pane" id="declaretion">
+    <div class="col-md-12">            
+        <p class="font_size_18">Korten declaration</p>
+    </div>
+      <div class="col-md-12 margin_top_15">
+       <div class="col-md-4">
+        <select class="form-control">
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+        </select>
+       </div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="End"></div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="Rest"></div>
+       </div>
+             <div class="col-md-12 margin_top_15">
+       <div class="col-md-4">
+        <select class="form-control">
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+        </select>
+       </div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="End"></div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="Rest"></div>
+       </div>
+             <div class="col-md-12 margin_top_15">
+       <div class="col-md-4">
+        <select class="form-control">
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+        </select>
+       </div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="End"></div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="Rest"></div>
+       </div>
+             <div class="col-md-12 margin_top_15">
+       <div class="col-md-4">
+        <select class="form-control">
+          <option>2014</option>
+          <option>2015</option>
+          <option>2016</option>
+        </select>
+       </div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="End"></div>
+        <div class="col-md-2"><input type="text" class="form-control" placeholder="Rest"></div>
+       </div>
+              <div class="col-md-4 col-md-offset-4 margin_top_15">
+               <p class="font_size_18 ">Total</p>
+               </div>
+  </div>
+  <div class="tab-pane font_size_18" id="settings">
+    <div class="checkbox col-md-12">
+     <div class="col-md-6">
+      <label>
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great
+      </label>
+      </div>
+      <div class="col-md-4">
+          <input type="text" class="form-control" placeholder="End">
+      </div>
+    </div>
+    <div class="checkbox col-md-12 padding_left_30">
+      <label>
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great
+      </label>
+    </div>
+              <div class="col-md-12 margin_top_15">
+              <div class="col-md-4">
+                <select class="form-control">
+                  <option>2014</option>
+                  <option>2015</option>
+                  <option>2016</option>
+                </select>
+              </div>
+       </div>
+              <div class="col-md-12 margin_top_15">
+              <div class="col-md-4">
+                <select class="form-control">
+                  <option>2014</option>
+                  <option>2015</option>
+                  <option>2016</option>
+                </select>
+              </div>
+       </div>
+            <div class="col-md-12 margin_top_15">
+              <div class="col-md-4">
+                <select class="form-control">
+                  <option>2014</option>
+                  <option>2015</option>
+                  <option>2016</option>
+                </select>
+              </div>
+            </div>
+    <div class="checkbox col-md-12 padding_left_30">
+      <label>
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great
+      </label>
+    </div>
+    <div class="checkbox col-md-12 padding_left_30">
+      <label>
+        <input type="checkbox" value="">
+        Option one is this and that&mdash;be sure to include why it's great
+      </label>
+    </div>
+                <div class="col-md-12 margin_top_15">
+              <div class="col-md-4">
+                <select class="form-control">
+                  <option>2014</option>
+                  <option>2015</option>
+                  <option>2016</option>
+                </select>
+              </div>
+            </div>
   </div>
 </div>
  </div>

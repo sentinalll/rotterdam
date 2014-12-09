@@ -6,6 +6,7 @@ import model.entity.User;
 import model.entity.WorkHours;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tools.DateTools;
 import tools.Factory;
 
 import javax.json.*;
@@ -22,13 +23,20 @@ import java.util.List;
 public class JsonCommands {
 
     public static final String PARAM_FIRSTNAME = "firstname";
-    public static final String PARAM_DATE = "date";
     public static final String PARAM_EMAIL_FORGOT = "email_forgot";
     public static final String PARAM_START_WORKING_TIME = "startWorkingTime";
     public static final String PARAM_END_WORKING_TIME = "endWorkingTime";
     public static final String PARAM_RIDE_TYPE = "rideType";
     public static final String PARAM_REST_TIME = "restTime";
+    public static final String PARAM_DATE = "date";
+    public static final String PARAM_WEEK_LIST = "weekList";
+    public static final String PARAM_CURRENT_YEAR = "currentYear";
+    public static final String PARAM_CURRENT_MONTH = "currentMonth";
+    public static final String PARAM_CURRENT_WEEK_NUMBER = "currentWeekNumber";
     public static final String PARAM_DATE_PATTERN = "yyyy-MM-dd";
+    public static final String PARAM_DATE_FULL_PATTERN = "yyyy/MM/dd HH:mm";
+    public static final String PARAM_YEAR_PATTERN = "yyyy";
+    public static final String PARAM_MONTH_PATTERN = "MM";
     public static final String PARAM_TIME_PATTERN = "HH-mm";
 
     private JsonCommands(){}
@@ -115,7 +123,6 @@ public class JsonCommands {
      */
     public static WorkHours parseTimeTab (HttpServletRequest hsr, String data) throws ParseException {
         JSONObject timeTabData = new JSONObject(data);
-        System.out.println(timeTabData);
         WorkHours workHours = null;
         DateFormat dateFormat = null;
         DateFormat timeFormat = null;
@@ -145,5 +152,47 @@ public class JsonCommands {
             return null;
         }
     }
+    /**
+     * return null if user not exist in session
+     */
+    public static JsonObject getInitAfterLoginData (HttpServletRequest hsr) throws JsonException, ParseException {
+        CookieUtil cookieUtil = new CookieUtil();
+        DateFormat yearFormat = null;
+        DateFormat monthFormat = null;
+        DateFormat dateFormat = null;
+        DateFormat simpleDateFormat = null;
+
+        User user = Factory
+                .getInstance()
+                .getSessionDAO()
+                .selectBySessionId(cookieUtil.getSessionIdFromRequest(hsr))
+                .getUser();
+        if (user != null){
+            Date currentDate = new Date();
+            yearFormat = new SimpleDateFormat(PARAM_YEAR_PATTERN);
+            monthFormat = new SimpleDateFormat(PARAM_MONTH_PATTERN);
+            dateFormat = new SimpleDateFormat(PARAM_DATE_FULL_PATTERN);
+            simpleDateFormat = new SimpleDateFormat(PARAM_DATE_PATTERN);
+
+            JsonObjectBuilder resultJsonDate = Json.createObjectBuilder()
+                    .add(PARAM_FIRSTNAME, user.getFirstname())
+                    .add(PARAM_DATE, dateFormat.format(currentDate))
+                    .add(PARAM_CURRENT_YEAR, yearFormat.format(currentDate))
+                    .add(PARAM_CURRENT_MONTH, monthFormat.format(currentDate))
+                    .add(PARAM_CURRENT_WEEK_NUMBER, DateTools.getCurrentWeekNumber(currentDate));
+
+            JsonArrayBuilder jsonArray = Json.createArrayBuilder();
+            List<Date> daysOfWeek = DateTools.getDateForWeekMonthYear(currentDate);
+            for (Date date : daysOfWeek) {
+                jsonArray.add(simpleDateFormat.format(date));
+            }
+            resultJsonDate.add(PARAM_WEEK_LIST, jsonArray);
+            return resultJsonDate.build();
+
+        } else {
+            return  null;
+        }
+    }
+
 
 }

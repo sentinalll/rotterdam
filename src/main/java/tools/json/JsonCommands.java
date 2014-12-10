@@ -157,11 +157,6 @@ public class JsonCommands {
      */
     public static JsonObject getInitAfterLoginData (HttpServletRequest hsr) throws JsonException, ParseException {
         CookieUtil cookieUtil = new CookieUtil();
-        DateFormat yearFormat = null;
-        DateFormat monthFormat = null;
-        DateFormat dateFormat = null;
-        DateFormat simpleDateFormat = null;
-
         User user = Factory
                 .getInstance()
                 .getSessionDAO()
@@ -169,10 +164,10 @@ public class JsonCommands {
                 .getUser();
         if (user != null){
             Date currentDate = new Date();
-            yearFormat = new SimpleDateFormat(PARAM_YEAR_PATTERN);
-            monthFormat = new SimpleDateFormat(PARAM_MONTH_PATTERN);
-            dateFormat = new SimpleDateFormat(PARAM_DATE_FULL_PATTERN);
-            simpleDateFormat = new SimpleDateFormat(PARAM_DATE_PATTERN);
+            DateFormat yearFormat = new SimpleDateFormat(PARAM_YEAR_PATTERN);
+            DateFormat monthFormat = new SimpleDateFormat(PARAM_MONTH_PATTERN);
+            DateFormat dateFormat = new SimpleDateFormat(PARAM_DATE_FULL_PATTERN);
+            DateFormat simpleDateFormat = new SimpleDateFormat(PARAM_DATE_PATTERN);
 
             JsonObjectBuilder resultJsonDate = Json.createObjectBuilder()
                     .add(PARAM_FIRSTNAME, user.getFirstname())
@@ -192,6 +187,21 @@ public class JsonCommands {
         } else {
             return  null;
         }
+    }
+
+    public static JsonObject getWeekData (String data) throws JsonException{
+        JSONObject timeTabData = new JSONObject(data);
+        DateFormat simpleDateFormat = new SimpleDateFormat(PARAM_DATE_PATTERN);
+        JsonObjectBuilder resultJsonDate = Json.createObjectBuilder();
+        JsonArrayBuilder jsonArray = Json.createArrayBuilder();
+        List<Date> daysOfWeek = DateTools.getDateForWeekMonthYear(timeTabData.getInt(PARAM_CURRENT_WEEK_NUMBER),
+                timeTabData.getInt(PARAM_CURRENT_MONTH),
+                timeTabData.getInt(PARAM_CURRENT_YEAR));
+        for (Date date : daysOfWeek) {
+            jsonArray.add(simpleDateFormat.format(date));
+        }
+        resultJsonDate.add(PARAM_WEEK_LIST, jsonArray);
+        return resultJsonDate.build();
     }
 
 

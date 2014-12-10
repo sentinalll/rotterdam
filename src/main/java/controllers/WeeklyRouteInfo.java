@@ -7,6 +7,8 @@ import tools.json.JsonCommands;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.json.JsonArray;
+import javax.json.JsonException;
+import javax.json.JsonObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -43,6 +45,19 @@ public class WeeklyRouteInfo {
     @Produces({ MediaType.APPLICATION_JSON })
     public Response getTimeInfo2(@Context HttpServletRequest hsr) throws ParseException {
         JsonArray jsonData = JsonCommands.getUserTimeData(hsr, "2014-12-07");   //TODO: date -  will be string from front-end (Week number)
+        if (jsonData != null){
+            return Response.ok(jsonData).build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED).build();
+        }
+    }
+
+    @RolesAllowed({ "Driver" })
+    @POST
+    @Path("/time/week")
+    @Consumes({ MediaType.APPLICATION_JSON })
+    public Response getCurrentWeek(@Context HttpServletRequest hsr, String data) throws JsonException {
+        JsonObject jsonData = JsonCommands.getWeekData(data);
         if (jsonData != null){
             return Response.ok(jsonData).build();
         } else {

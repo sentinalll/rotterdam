@@ -38,17 +38,18 @@
             $(this).parent().after(time_day_add);
         });
         $('#date_submit').click(function date_submit(){
-                var time_date = {
+                var selected_date  = {
                 year: $(".time_year option:selected").text(),
                 mount: $(".time_mount option:selected").text(),
                 week: $(".time_week option:selected").text()
             };
-            time_date(time_date);
+            alert(selected_date);
+            time_date(selected_date);
              });   
             function time_date(data) {
             $.ajax({
                 type: "POST",
-                url: "api/time/week",
+                url: "api/week",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

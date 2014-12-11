@@ -9,6 +9,14 @@
                         $(".username").append(data.firstname);
                         $("#userdate").append(data.date);   
                         $(".time_year option").append(data.currentYear);   
+                        $(".time_date").eq(0).append(data.weekList[0]);   
+                        $(".time_date").eq(1).append(data.weekList[1]);   
+                        $(".time_date").eq(2).append(data.weekList[2]);   
+                        $(".time_date").eq(3).append(data.weekList[3]);   
+                        $(".time_date").eq(4).append(data.weekList[4]);   
+                        $(".time_date").eq(5).append(data.weekList[5]);   
+                        $(".time_date").eq(6).append(data.weekList[6]);   
+                        $(".time_date").eq(7).append(data.weekList[7]);   
             }
                         }
                     });

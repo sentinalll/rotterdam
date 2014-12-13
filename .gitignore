@@ -4,5 +4,14 @@ target
 !.settings/.jsdtscope
 .project
 .classpath
+.idea
+*.iml
+.openshift
+.settings
+/deployments
+.gitignore
+
+
 /.tern-project
+
 

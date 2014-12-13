@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drive Tracking</title>
-
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/style.css" rel="stylesheet">
@@ -41,7 +40,7 @@
                 <input id="login_password" type="password" class="form-control margin_top_10"   placeholder="Password" data-error="Password empty" required>
                                 <div class="help-block with-errors"></div>
                                     <div class="center-block">
-                                        <a class="fogot_password" data-toggle="modal" data-target=".bs-example-modal-lg">Forgot password</a>
+                                        <a class="forgot_password" data-toggle="modal" data-target=".bs-example-modal-lg">Forgot password</a>
                                     </div>
                                 </div>
                                 </div>
@@ -54,8 +53,12 @@
                                 <form class="form-horizontal" data-toggle="validator" role="form">
                                 <div class="form-group margin-vertical-fix">
                                    <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name" data-error="Enter username" required> 
+                                    <input pattern="^[A-z][A-z0-9_\-\.]{2,}[A-z0-9]$" maxlength="20"  type="text" class="form-control" id="inputName" placeholder="Name" data-error="Enter username" required> 
                                 <div class="help-block with-errors"></div>
+<!--                               pattern="^([_A-z]){4,}$" maxlength="20"
+                                   pattern="^([_A-z])+@[a-z]{4,}$"
+                                   pattern="^[A-z0-9_\-]+@[a-z0-9_\-]+\.([a-z]+\.)*[a-z]{2,}$" maxlength="30"
+                                   -->
                                     </div>
                                   </div>
                                   <div class="form-group margin_fix">
@@ -66,17 +69,18 @@
                                   </div>
                                    <div class="form-group margin_fix">
                                    <div class="col-sm-12">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Invalid Email" required>
+                                    <input type="email"  pattern="^[A-z0-9_\-]+@[a-z0-9_\-]+\.([a-z]+\.)*[a-z]{2,}$" maxlength="30" class="form-control" id="inputEmail" placeholder="Email" data-error="Invalid Email" required>
                                     <div class="help-block with-errors"></div>
                                     </div>
                                   </div>
                                <!-- Password input-->
                                <div class="form-group">
                                 <div class="col-sm-12">
-                                  <input type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" >
+                                  <input pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="30" type="password" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" >
                                 </div>
                                 <div class="col-sm-12">
-                                  <input type="password" class="form-control margin_top_10" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Пароли не совпадают" placeholder="Repeat password" data-error="Password empty" required>
+                                  <input pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" maxlength="30" type="password" class="form-control margin_top_10" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Passwords do not match
+ " placeholder="Repeat password" data-error="Insufficiently complex password" required>
                                   <div class="help-block with-errors"></div>
                                 </div>
                                 </div>

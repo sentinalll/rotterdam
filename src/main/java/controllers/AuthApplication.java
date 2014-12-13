@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import controllers.auth.CookieUtil;
+import tools.DateTools;
 import tools.Factory;
 import tools.SecuritySettings;
 
@@ -26,6 +27,7 @@ import tools.SecuritySettings;
 @PermitAll
 public class AuthApplication {
 
+	
 	private CookieUtil cookieUtil = new CookieUtil();
 
 	@POST
@@ -43,10 +45,9 @@ public class AuthApplication {
 		if (user != null && cookieUtil.insertSessionUID(rspn, user))
 			return Response.ok().build();
 		else
-			return Response.status(401).build();
+			return Response.status(Response.Status.UNAUTHORIZED).build();
 	}
 
-	@RolesAllowed({ "Driver" })
 	@POST
 	@Path("/logout")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -55,24 +56,7 @@ public class AuthApplication {
 		if (cookieUtil.removeSessionUID(hsr, rspn))
 			return Response.ok().build();
 		else
-			return Response.status(404).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 	}
 
-	@RolesAllowed("Admin")
-	@GET
-	@Path("/testadmin")
-	public Response test(@Context HttpServletRequest hsr,
-			@Context HttpServletResponse rspn) throws JSONException {
-		System.out.println("testadmin");
-		return Response.ok().build();
-	}
-
-	@RolesAllowed("Unpaid")
-	@GET
-	@Path("/testunpaid")
-	public Response testunpaid(@Context HttpServletRequest hsr,
-			@Context HttpServletResponse rspn) throws JSONException {
-		System.out.println("testunpaid");
-		return Response.ok().build();
-	}
 }

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jboss-deployment-structure>
-	<deployment>
-		<dependencies>
-			<module name="org.jboss.resteasy.resteasy-jaxrs" services="export"
-				export="true" />
-			<module name="org.jboss.resteasy.resteasy-jaxb-provider" />
-			<module name="org.jboss.resteasy.resteasy-jackson-provider" />
-			<module name="org.codehaus.jackson.jackson-core-asl" />
-			<module name="org.apache.httpcomponents" services="export"
-				export="true" />
-		</dependencies>
-	</deployment>
+    <deployment>
+        <exclusions>
+           <module name="org.jboss.resteasy.resteasy-jackson-provider"/>
+        </exclusions>
+        <dependencies>
+            <module name="org.jboss.resteasy.resteasy-jackson2-provider" services="import"/>
+        </dependencies>
+    </deployment>
 </jboss-deployment-structure> 

@@ -76,7 +76,7 @@
             function compensation_json(data) {
             $.ajax({
                 type: "POST",
-                url: "api/",
+                url: "api/usetimefortime",
                 data: JSON.stringify(data),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",

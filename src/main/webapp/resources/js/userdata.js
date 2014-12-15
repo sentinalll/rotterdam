@@ -69,7 +69,7 @@
         };
                $('#compensation_btn').click(function compensation(){
                 var compensation = {
-                    compensation_time: $('#compensation_time').val()   
+                    use_time_for_time: $('#compensation_time').val()   
                 };
                   compensation_json(compensation);
                });

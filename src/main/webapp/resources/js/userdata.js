@@ -33,18 +33,17 @@
               }
           });
         });
+
         $('.add_row').click(function(){
-            var time_day_add ='<div class="col-md-4 margin_bottom_10 time_tab_row"><div class="col-md-4 font_size_18 time_date"></div><div class="col-md-4 font_size_18 time_day"></div><div class="col-md-4"><input type="text" class="form-control" placeholder="Start"></div></div><div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control" placeholder="End"></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Rest"></div></div><div class="col-md-4 margin_bottom_10"><div class="col-md-4"><select class="form-control"><option>1</option><option>2</option></select></div><div class="col-md-4 time_tab_del"><button type="button" class="btn btn-danger btn-block">Delete</button></div></div>'
+            var time_day_add ='<div class="time_tab_row"><div class="col-md-4 margin_bottom_10 "><div class="col-md-4 font_size_18 time_date"></div><div class="col-md-4 font_size_18 time_day"></div><div class="col-md-4"><input type="text" class="form-control" placeholder="Start"></div></div><div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control" placeholder="End"></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Rest"></div></div><div class="col-md-4 margin_bottom_10"><div class="col-md-4"><select class="form-control"><option>1</option><option>2</option></select></div><div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div</div>'
             $(this).parent().after(time_day_add);
+        $('.time_tab_del').bind('click',function(){
+            $($(this).parents().get(2)).remove();
+
         });
-//        $('.time_tab_del').bind('click', function(){
-//            alert("ok");
-//    // что-то делаем
-//        });
-         $('.time_tab_del').click(function del_time_row(){
-            alert("ok");
-            
         });
+
+
         $('#date_submit').click(function date_submit(){
                 var selected_date  = {
                 year: $(".time_year option:selected").text(),

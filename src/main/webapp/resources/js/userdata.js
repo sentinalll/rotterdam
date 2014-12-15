@@ -68,4 +68,24 @@
                 }
             });
         };
+               $('#compensation_btn').click(function compensation(){
+                var compensation = {
+                    compensation_time: $('#compensation_time').val()   
+                };
+                  compensation_json(compensation);
+               });
+            function compensation_json(data) {
+            $.ajax({
+                type: "POST",
+                url: "api/",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                statusCode: {
+                    200: function () {
+                        alert("Success...");
+                    }
+                }
+            });
+        };
      });

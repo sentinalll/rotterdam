@@ -25,6 +25,7 @@ public class JsonCommands {
     public static final String PARAM_FIRSTNAME = "firstname";
     public static final String PARAM_EMAIL_FORGOT = "email_forgot";
     public static final String PARAM_AVL_TIME_FOR_TIME = "avl_time_for_time";
+    public static final String PARAM_AVL_TIME_FOR_PAY = "avl_time_for_pay";
     public static final String PARAM_START_WORKING_TIME = "startWorkingTime";
     public static final String PARAM_END_WORKING_TIME = "endWorkingTime";
     public static final String PARAM_RIDE_TYPE = "rideType";
@@ -111,6 +112,33 @@ public class JsonCommands {
 
     }
 
+    /**
+    *
+    * @param hsr, newHours.
+    * @return Jsonobject containing avaliable time-to-pay hours after subtraction of used hours
+    * @throws JsonException
+    */
+
+   public static JsonObject getTimeForTimePayHours(HttpServletRequest hsr, Long newHours) throws JsonException {
+       CookieUtil cookieUtil = new CookieUtil();
+       User user = Factory
+               .getInstance()
+               .getSessionDAO()
+               .selectBySessionId(cookieUtil.getSessionIdFromRequest(hsr))
+               .getUser();
+       if (user != null) {
+           //TODO: Implement real request to db and data retrieval
+           JsonObject jsonAvaliableTimeForPay = Json.createObjectBuilder()
+                   .add(PARAM_AVL_TIME_FOR_PAY, newHours.toString())
+                   .build();
+           return jsonAvaliableTimeForPay;
+       } else {
+           return null;
+       }
+
+
+   }
+    
     /**
      * return null if any data not exist in database for this date
      */

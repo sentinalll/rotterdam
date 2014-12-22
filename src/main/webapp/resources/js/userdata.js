@@ -87,4 +87,25 @@
                 }
             });
         };
+   $('#payment_time_btn').click(function payment_time(){
+                var paymenttime = {
+                    avl_time_for_pay: $('#payment_time_field').val()   
+                };
+                  alert(paymenttime.avl_time_for_pay);
+                  payment_time(avl_time_for_pay);
+               });
+            function compensation_json(data) {
+            $.ajax({
+                type: "POST",
+                url: "api/paymenttime",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                statusCode: {
+                    200: function () {
+                        alert("Success...");
+                    }
+                }
+            });
+        };
      });

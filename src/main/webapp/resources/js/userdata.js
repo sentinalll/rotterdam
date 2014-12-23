@@ -16,7 +16,7 @@
                         $(".time_date").eq(4).append(data.weekList[4]);   
                         $(".time_date").eq(5).append(data.weekList[5]);   
                         $(".time_date").eq(6).append(data.weekList[6]);   
-                        $(".time_date").eq(7).append(data.weekList[7]);   
+//                        $(".time_date").eq(7).append(data.weekList[7]);   
             }
                         }
                     });
@@ -39,7 +39,6 @@
             $(this).parent().after(time_day_add);
         $('.time_tab_del').bind('click',function(){
             $($(this).parents().get(2)).remove();
-
         });
         });
 
@@ -87,6 +86,8 @@
                 }
             });
         };
+        var time_start = new Array( data.weekList[0], data.weekList[1],data.weekList[3], data.weekList[4],data.weekList[5], data.weekList[6] );
+        alert(time_start[1]);
    $('#payment_time_btn').click(function payment_time(){
                 var paymenttime = {
                     avl_time_for_pay: $('#payment_time_field').val()   

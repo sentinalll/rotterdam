@@ -45,9 +45,9 @@
 
         $('#date_submit').click(function date_submit(){
                 var selected_date  = {
-                year: $(".time_year option:selected").text(),
-                mount: $(".time_mount option:selected").text(),
-                week: $(".time_week option:selected").text()
+                currentYear: $(".time_year option:selected").text(),
+                currentMonth: $(".time_mount option:selected").text(),
+                currentWeekNumber: $(".time_week option:selected").text()
             };
             alert(selected_date);
             time_date(selected_date);

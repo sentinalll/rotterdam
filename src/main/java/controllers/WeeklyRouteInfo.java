@@ -54,7 +54,7 @@ public class WeeklyRouteInfo {
 
     @RolesAllowed({ "Driver" })
     @POST
-    @Path("/time/week")
+    @Path("/week")
     @Consumes({ MediaType.APPLICATION_JSON })
     public Response getCurrentWeek(@Context HttpServletRequest hsr, String data) throws JsonException {
         JsonObject jsonData = JsonCommands.getWeekData(data);

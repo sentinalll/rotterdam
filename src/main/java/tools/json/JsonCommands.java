@@ -223,14 +223,78 @@ public class JsonCommands {
         DateFormat simpleDateFormat = new SimpleDateFormat(PARAM_DATE_PATTERN);
         JsonObjectBuilder resultJsonDate = Json.createObjectBuilder();
         JsonArrayBuilder jsonArray = Json.createArrayBuilder();
-        List<Date> daysOfWeek = DateTools.getDateForWeekMonthYear(timeTabData.getInt(PARAM_CURRENT_WEEK_NUMBER),
-                timeTabData.getInt(PARAM_CURRENT_MONTH),
+        List<Date> daysOfWeek = DateTools.getDateForWeekMonthYear(convertWeekNameToNumber(timeTabData.getString(PARAM_CURRENT_WEEK_NUMBER)),
+                convertMonthNameToNumber(timeTabData.getString(PARAM_CURRENT_MONTH)),
                 timeTabData.getInt(PARAM_CURRENT_YEAR));
         for (Date date : daysOfWeek) {
             jsonArray.add(simpleDateFormat.format(date));
         }
         resultJsonDate.add(PARAM_WEEK_LIST, jsonArray);
         return resultJsonDate.build();
+    }
+
+    public static int convertMonthNameToNumber(String month) {
+        int result= -1;
+        switch (month) {
+            case "January" :
+                result = 1;
+                break;
+            case "February" :
+                result = 2;
+                break;
+            case "March" :
+                result = 3;
+                break;
+            case "April" :
+                result = 4;
+                break;
+            case "May" :
+                result = 5;
+                break;
+            case "June" :
+                result = 6;
+                break;
+            case "July" :
+                result = 7;
+                break;
+            case "August" :
+                result = 8;
+                break;
+            case "September" :
+                result = 9;
+                break;
+            case "October" :
+                result = 10;
+                break;
+            case "November" :
+                result = 11;
+                break;
+            case "December" :
+                result = 12;
+                break;
+
+        }
+        return result;
+    }
+
+    public static int convertWeekNameToNumber(String month) {
+        int result= -1;
+        switch (month) {
+            case "Week 1" :
+                result = 1;
+                break;
+            case "Week 2" :
+                result = 2;
+                break;
+            case "Week 3" :
+                result = 3;
+                break;
+            case "Week 4" :
+                result = 4;
+                break;
+
+        }
+        return result;
     }
 
 

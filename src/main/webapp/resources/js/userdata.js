@@ -63,7 +63,6 @@
                 currentMonth: $(".time_mount option:selected").text(),
                 currentWeekNumber: $(".time_week option:selected").text()
             };
-            alert(selected_date);
             time_date(selected_date);
              }); 
             function time_date(data) {
@@ -74,8 +73,15 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 statusCode: {
-                    200: function () {
-                        alert("Success...");
+                    200: function (data) {
+                        $(".time_date").empty();
+                        $(".time_date").eq(0).append(data.weekList[0]);
+                        $(".time_date").eq(1).append(data.weekList[1]);
+                        $(".time_date").eq(2).append(data.weekList[2]);
+                        $(".time_date").eq(3).append(data.weekList[3]);
+                        $(".time_date").eq(4).append(data.weekList[4]);
+                        $(".time_date").eq(5).append(data.weekList[5]);
+                        $(".time_date").eq(6).append(data.weekList[6]);
                     }
                 }
             });

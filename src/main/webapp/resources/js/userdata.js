@@ -113,9 +113,9 @@
                     avl_time_for_pay: $('#payment_time_field').val()   
                 };
                   alert(paymenttime.avl_time_for_pay);
-                  payment_time(avl_time_for_pay);
+                  payment_json(avl_time_for_pay);
                });
-            function compensation_json(data) {
+            function payment_json(data) {
             $.ajax({
                 type: "POST",
                 url: "api/paymenttime",

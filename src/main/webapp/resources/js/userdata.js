@@ -15,8 +15,9 @@
                         $(".time_date").eq(3).append(data.weekList[3]);   
                         $(".time_date").eq(4).append(data.weekList[4]);   
                         $(".time_date").eq(5).append(data.weekList[5]);   
-                        $(".time_date").eq(6).append(data.weekList[6]);   
-//                        $(".time_date").eq(7).append(data.weekList[7]); 
+                        $(".time_date").eq(6).append(data.weekList[6]);
+                        $(".time_mount :nth-child("+data.currentMonth+")").attr("selected", "selected");
+                        $(".time_week :nth-child("+data.currentWeekNumber+")").attr("selected", "selected");
             }     
                         }
                     });
@@ -95,7 +96,7 @@
                         $(".time_date").eq(4).append(data.weekList[4]);
                         $(".time_date").eq(5).append(data.weekList[5]);
                         $(".time_date").eq(6).append(data.weekList[6]);
-                        var curentMounts = data.currentMonth;
+                        var curentMounts = 12;
                         var currentWeekNumber = data.currentWeekNumber;
                         $(".time_mount :nth-child("+currentMonth+")").attr("selected", "selected");
                         $(".time_week :nth-child("+currentWeekNumber+")").attr("selected", "selected");

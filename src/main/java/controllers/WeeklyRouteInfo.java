@@ -30,12 +30,13 @@ public class WeeklyRouteInfo {
     @Path("/time")
     @Consumes({ MediaType.APPLICATION_JSON })
     public Response getTimeInfo(@Context HttpServletRequest hsr, String data) throws ParseException {
-        WorkHours workHours = JsonCommands.parseTimeTab(hsr, data);
-        if (workHours != null && Factory.getInstance().getWorkHoursDAO().insert(workHours)) {
+        System.out.println(data);
+//        WorkHours workHours = JsonCommands.parseTimeTab(hsr, data);
+//        if (workHours != null && Factory.getInstance().getWorkHoursDAO().insert(workHours)) {
             return Response.ok().build();
-        } else {
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
-        }
+//        } else {
+//            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
+//        }
 
     }
 

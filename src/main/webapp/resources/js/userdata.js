@@ -49,7 +49,20 @@
         });
 
         $('.add_row').click(function(){
-            var time_day_add ='<div class="time_tab_row"><div class="col-md-4 margin_bottom_10 "><div class="col-md-4 font_size_18 time_date"></div><div class="col-md-4 font_size_18 time_day"></div><div class="col-md-4"><input type="text" class="form-control" placeholder="Start"></div></div><div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control" placeholder="End"></div><div class="col-md-6"><input type="text" class="form-control" placeholder="Rest"></div></div><div class="col-md-4 margin_bottom_10"><div class="col-md-4"><select class="form-control"><option>1</option><option>2</option></select></div><div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div></div>'
+            var time_day_add ='<div class="time_tab_row">' +
+                '<div class="col-md-4 margin_bottom_10 ">' +
+                '<div class="col-md-4 font_size_18 time_date"></div>' +
+                '<div class="col-md-4 font_size_18 time_day"></div>' +
+                '<div class="col-md-4">' +
+                '<input type="text" class="form-control time_monday_start" placeholder="Start"></div></div>' +
+                '<div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control time_monday_end" placeholder="End"></div>' +
+                '<div class="col-md-6"><input type="text" class="form-control time_monday_rest" placeholder="Rest"></div>' +
+                '</div><div class="col-md-4 margin_bottom_10"><div class="col-md-4">' +
+                '<select class="form-control time_monday_ride_type">' +
+                '<option>1</option>' +
+                '<option>2</option>' +
+                '</select></div>' +
+                '<div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div></div>'
             $(this).parent().after(time_day_add);
         $('.time_tab_del').bind('click',function(){
             $($(this).parents().get(2)).remove();
@@ -129,4 +142,52 @@
                 }
             });
         };
-     });
+        $('#date_save').click(function date_save(){
+            var arr = [];
+            arr[arr.length] ={
+                date :              $(".time_date").eq(0).text()
+            };
+            $(".time_monday_start").each(function(data){
+                arr[arr.length] ={
+                    startWorkingTime :  $(".time_monday_start").eq(data).val(),
+                    endWorkingTime :    $(".time_monday_end").eq(data).val(),
+                    restTime :          $(".time_monday_rest").eq(data).val(),
+                    rideType :          $(".time_monday_ride_type option:selected").eq(data).val()
+                };
+            });
+            /*var arr2 = [];
+            arr2[arr2.length] ={
+                date :              $(".time_date").eq(1).text()
+            };
+            $(".time_tuesday_start").each(function(data){
+                arr2[arr2.length] ={
+                    startWorkingTime :  $(".time_monday_start").eq(data).val(),
+                    endWorkingTime :    $(".time_monday_end").eq(data).val(),
+                    restTime :          $(".time_monday_rest").eq(data).val(),
+                    rideType :          $(".time_monday_ride_type option:selected").eq(data).val()
+                };
+            });*/
+
+
+
+            var s_date  = {
+
+                monday : arr
+            };
+            time_save(s_date);
+        });
+        function time_save(data) {
+            $.ajax({
+                type: "POST",
+                url: "api/time",
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                statusCode: {
+                    200: function () {
+                        alert("good")
+                    }
+                }
+            });
+        };
+    });

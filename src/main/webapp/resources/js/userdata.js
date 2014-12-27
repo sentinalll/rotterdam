@@ -242,7 +242,7 @@
         function date_to_save(day, number){
             var arr = [];
             arr[arr.length] ={
-                date :              $(".time_date").eq(Number(number)).text()
+                date : $(".time_date").eq(Number(number)).text()
             };
             $(".time_"+ day +"_start").each(function(data){
                 arr[arr.length] ={

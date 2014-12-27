@@ -49,7 +49,7 @@
           });
         });
 
-        $('.add_row').click(function(){
+        /*$('.add_row').click(function(){
             var time_day_add ='<div class="time_tab_row">' +
                 '<div class="col-md-4 margin_bottom_10 ">' +
                 '<div class="col-md-4 font_size_18 time_date"></div>' +
@@ -68,8 +68,77 @@
         $('.time_tab_del').bind('click',function(){
             $($(this).parents().get(2)).remove();
         });
+        });*/
+
+        $('.add_row_monday').click(function(){
+            var time_day_add = tryOne("monday");
+         $(this).parent().after(time_day_add);
+         $('.time_tab_del').bind('click',function(){
+         $($(this).parents().get(2)).remove();
+         });
+         });
+
+        $('.add_row_tuesday').click(function(){
+            var time_day_add = tryOne("tuesday");
+            $(this).parent().after(time_day_add);
+            $('.time_tab_del').bind('click',function(){
+                $($(this).parents().get(2)).remove();
+            });
         });
 
+        $('.add_row_wednesday').click(function(){
+            var time_day_add = tryOne("wednesday");
+            $(this).parent().after(time_day_add);
+            $('.time_tab_del').bind('click',function(){
+                $($(this).parents().get(2)).remove();
+            });
+        });
+        $('.add_row_thursday').click(function(){
+            var time_day_add = tryOne("thursday");
+            $(this).parent().after(time_day_add);
+            $('.time_tab_del').bind('click',function(){
+                $($(this).parents().get(2)).remove();
+            });
+        });
+        $('.add_row_friday').click(function(){
+            var time_day_add = tryOne("friday");
+            $(this).parent().after(time_day_add);
+            $('.time_tab_del').bind('click',function(){
+                $($(this).parents().get(2)).remove();
+            });
+        });
+        $('.add_row_saturday').click(function(){
+            var time_day_add = tryOne("saturday");
+            $(this).parent().after(time_day_add);
+            $('.time_tab_del').bind('click',function(){
+                $($(this).parents().get(2)).remove();
+            });
+        });
+        $('.add_row_sunday').click(function(){
+            var time_day_add = tryOne("sunday");
+            $(this).parent().after(time_day_add);
+            $('.time_tab_del').bind('click',function(){
+                $($(this).parents().get(2)).remove();
+            });
+        });
+
+    function tryOne(data) {
+        var time_day_add = '<div class="time_tab_row">' +
+            '<div class="col-md-4 margin_bottom_10 ">' +
+            '<div class="col-md-4 font_size_18 time_date"></div>' +
+            '<div class="col-md-4 font_size_18 time_day"></div>' +
+            '<div class="col-md-4">' +
+            '<input type="text" class="form-control time_' + data +'_start" placeholder="Start"></div></div>' +
+            '<div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control time_' + data +'_end" placeholder="End"></div>' +
+            '<div class="col-md-6"><input type="text" class="form-control time_' + data +'_rest" placeholder="Rest"></div>' +
+            '</div><div class="col-md-4 margin_bottom_10"><div class="col-md-4">' +
+            '<select class="form-control time_' + data +'_ride_type">' +
+            '<option>1</option>' +
+            '<option>2</option>' +
+            '</select></div>' +
+            '<div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div></div>'
+        return time_day_add;
+    };
 
         $('#date_submit').click(function date_submit(){
                 var selected_date  = {
@@ -144,36 +213,15 @@
             });
         };
         $('#date_save').click(function date_save(){
-            var arr = [];
-            arr[arr.length] ={
-                date :              $(".time_date").eq(0).text()
-            };
-            $(".time_monday_start").each(function(data){
-                arr[arr.length] ={
-                    startWorkingTime :  $(".time_monday_start").eq(data).val(),
-                    endWorkingTime :    $(".time_monday_end").eq(data).val(),
-                    restTime :          $(".time_monday_rest").eq(data).val(),
-                    rideType :          $(".time_monday_ride_type option:selected").eq(data).val()
-                };
-            });
-            /*var arr2 = [];
-            arr2[arr2.length] ={
-                date :              $(".time_date").eq(1).text()
-            };
-            $(".time_tuesday_start").each(function(data){
-                arr2[arr2.length] ={
-                    startWorkingTime :  $(".time_monday_start").eq(data).val(),
-                    endWorkingTime :    $(".time_monday_end").eq(data).val(),
-                    restTime :          $(".time_monday_rest").eq(data).val(),
-                    rideType :          $(".time_monday_ride_type option:selected").eq(data).val()
-                };
-            });*/
-
-
-
             var s_date  = {
+                Monday :    date_to_save("monday", 0),
+                Tuesday :   date_to_save("tuesday", 1),
+                Wednesday : date_to_save("wednesday", 2),
+                Thursday :  date_to_save("thursday", 3),
+                Friday :    date_to_save("friday", 4),
+                Saturday :  date_to_save("saturday", 5),
+                Sunday :    date_to_save("sunday", 6)
 
-                monday : arr
             };
             time_save(s_date);
         });
@@ -190,5 +238,20 @@
                     }
                 }
             });
-        };
+        }
+        function date_to_save(day, number){
+            var arr = [];
+            arr[arr.length] ={
+                date :              $(".time_date").eq(Number(number)).text()
+            };
+            $(".time_"+ day +"_start").each(function(data){
+                arr[arr.length] ={
+                    startWorkingTime :  $(".time_"+ day +"_start").eq(data).val(),
+                    endWorkingTime :    $(".time_"+ day +"_end").eq(data).val(),
+                    restTime :          $(".time_"+ day +"_rest").eq(data).val(),
+                    rideType :          $(".time_"+ day +"_ride_type option:selected").eq(data).val()
+                };
+            });
+            return arr;
+        }
     });

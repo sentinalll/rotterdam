@@ -96,10 +96,6 @@
                         $(".time_date").eq(4).append(data.weekList[4]);
                         $(".time_date").eq(5).append(data.weekList[5]);
                         $(".time_date").eq(6).append(data.weekList[6]);
-                        var curentMounts = 12;
-                        var currentWeekNumber = data.currentWeekNumber;
-                        $(".time_mount :nth-child("+currentMonth+")").attr("selected", "selected");
-                        $(".time_week :nth-child("+currentWeekNumber+")").attr("selected", "selected");
                     }
                 }
             });

@@ -20,15 +20,15 @@
             }     
                         }
                     });
-                    var time_mounts = { January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12};
-//        var obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
-            $.each( time_mounts, function( i, val ) {
-//                    $( "#" + i ).append( document.createTextNode( " - " + val ) );
-//                alert('Значение ключа '+i+' : '+val);
-//                if (mounts == val) {
-//                    i
+//                    var time_mounts = { January: 1, February: 2, March: 3, April: 4, May: 5, June: 6, July: 7, August: 8, September: 9, October: 10, November: 11, December: 12};
+////        var obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
+//            $.each( time_mounts, function( i, val ) {
+////                    $( "#" + i ).append( document.createTextNode( " - " + val ) );
+////                alert('Значение ключа '+i+' : '+val);
+//                for (i = 0; i < games.length; i++) {  
+//
 //                }
-                });
+//                });
 //                        var mounts = data.currentMonth;    
 //                        $(time_mounts).each(function(key, val) {
 //                        alert('Значение ключа '+key+' : '+val[]);
@@ -95,6 +95,8 @@
                         $(".time_date").eq(4).append(data.weekList[4]);
                         $(".time_date").eq(5).append(data.weekList[5]);
                         $(".time_date").eq(6).append(data.weekList[6]);
+                        $(".time_mount :nth-child("+data.currentMonth+")").attr("selected", "selected");
+                        $(".time_week :nth-child("+data.currentWeekNumber+")").attr("selected", "selected");
                     }
                 }
             });

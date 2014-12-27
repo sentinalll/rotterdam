@@ -38,7 +38,7 @@ public class DateTools {
 			int year) {
 		List<Date> result = new ArrayList();
 		DateTime dt = new DateTime(year, month, 1, 0, 0);
-		dt = dt.withWeekOfWeekyear(dt.getWeekOfWeekyear() + week - 1).withDayOfWeek(1);
+		dt = dt.withWeekOfWeekyear(dt.getWeekOfWeekyear() + week - 2).withDayOfWeek(1);
 		result.add(dt.toDate());
 		System.out.println("convert : "
 				+ convertDateToString(dt.toDate(), "dd-MM-yyyy"));

@@ -215,12 +215,12 @@
         $('#date_save').click(function date_save(){
             var s_date  = {
                 Monday :    date_to_save("monday", 0),
-                Tuesday :   date_to_save("tuesday", 1),
-                Wednesday : date_to_save("wednesday", 2),
-                Thursday :  date_to_save("thursday", 3),
-                Friday :    date_to_save("friday", 4),
-                Saturday :  date_to_save("saturday", 5),
-                Sunday :    date_to_save("sunday", 6)
+                Tuesday :   date_to_save("tuesday", date_to_save("monday", 0).length-1),
+                Wednesday : date_to_save("wednesday", date_to_save("monday", 0).length + date_to_save("tuesday", 0).length - 2),
+                Thursday :  date_to_save("thursday", date_to_save("monday", 0).length + date_to_save("tuesday", 0).length + date_to_save("wednesday", 0).length - 3),
+                Friday :    date_to_save("friday", date_to_save("monday", 0).length + date_to_save("tuesday", 0).length + date_to_save("wednesday", 0).length + date_to_save("thursday", 0).length - 4),
+                Saturday :  date_to_save("saturday", date_to_save("monday", 0).length + date_to_save("tuesday", 0).length + date_to_save("wednesday", 0).length + date_to_save("thursday", 0).length + date_to_save("friday", 0).length - 5),
+                Sunday :    date_to_save("sunday", date_to_save("monday", 0).length + date_to_save("tuesday", 0).length + date_to_save("wednesday", 0).length + date_to_save("thursday", 0).length + date_to_save("friday", 0).length + date_to_save("saturday", 0).length - 6)
 
             };
             time_save(s_date);

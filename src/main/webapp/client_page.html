@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns="http://java.sun.com/jsf/html">
+<html lang="ru" xmlns="http://java.sun.com/jsf/html" ng-app="mgcrea.ngStrapDocs">
   <head>
     <meta charset="utf-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,6 +8,8 @@
 
     <!-- Bootstrap -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/librares.min.css" rel="stylesheet">
+    <link href="resources/css/angular-motion.css" rel="stylesheet">
     <link href="resources/css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -59,7 +61,7 @@
             </dl>
         </div>
   </div>
-  <div class="tab-pane" id="Time">
+  <div class="tab-pane" id="Time" ng-controller="TimepickerDemoCtrl">
    <div class="row col-xs-12">
    <div class="col-md-2 col-xs-6 margin_bottom_10">
     <select class="form-control time_year">
@@ -100,16 +102,24 @@
     </div>
         <hr class="col-xs-12">
    </div>
+   <div class="time_tab_general"></div>
    <div class="row col-xs-12 time_tab ">
        <div class="col-md-4 col-xs-12 ">
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Monday</div>
         <div class="col-md-4">
-        <input type="text" class="form-control time_monday_start" placeholder="Start">
-        </div>
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_start_monday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberMondayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_monday" placeholder="Start" bs-timepicker>
+      </div>      
+       </div>
        </div>
        <div class="col-md-4 ">
-        <div class="col-md-6"><input type="text" class="form-control time_monday_end" placeholder="End"></div>
+      <div class="col-md-6">
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_end_monday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberMondayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_end_monday" placeholder="End" bs-timepicker>
+      </div>
+      </div>
+       
         <div class="col-md-6"><input type="text" class="form-control time_monday_rest" placeholder="Rest"></div>
        </div>
        <div class="col-md-4 ">
@@ -129,11 +139,17 @@
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Tuesday</div>
         <div class="col-md-4">
-        <input type="text" class="form-control time_tuesday_start" placeholder="Start">
-        </div>
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_start_tuesday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberTuesdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_tuesday" placeholder="Start" bs-timepicker>
+      </div>      
+       </div>
        </div>
        <div class="col-md-4 ">
-        <div class="col-md-6"><input type="text" class="form-control time_tuesday_end" placeholder="End"></div>
+      <div class="col-md-6">
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberTuesdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
+      </div>
+      </div>
         <div class="col-md-6"><input type="text" class="form-control time_tuesday_rest" placeholder="Rest"></div>
        </div>
        <div class="col-md-4 ">
@@ -153,11 +169,17 @@
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Wednesday</div>
         <div class="col-md-4">
-        <input type="text" class="form-control time_wednesday_start" placeholder="Start">
-        </div>
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_start_wednesday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberWednesdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_wednesday" placeholder="Start" bs-timepicker>
+      </div>      
+       </div>
        </div>
        <div class="col-md-4 ">
-        <div class="col-md-6"><input type="text" class="form-control time_wednesday_end" placeholder="End"></div>
+      <div class="col-md-6">
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberWednesdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
+      </div>
+      </div>
         <div class="col-md-6"><input type="text" class="form-control time_wednesday_rest" placeholder="Rest"></div>
        </div>
        <div class="col-md-4 ">
@@ -177,11 +199,17 @@
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Thursday</div>
         <div class="col-md-4">
-        <input type="text" class="form-control time_thursday_start" placeholder="Start">
-        </div>
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_start_thursday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberThursdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_thursday" placeholder="Start" bs-timepicker>
+      </div>      
+       </div>
        </div>
        <div class="col-md-4 ">
-        <div class="col-md-6"><input type="text" class="form-control time_thursday_end" placeholder="End"></div>
+      <div class="col-md-6">
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberThursdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
+      </div>
+      </div>
         <div class="col-md-6"><input type="text" class="form-control time_thursday_rest" placeholder="Rest"></div>
        </div>
        <div class="col-md-4 ">
@@ -201,11 +229,17 @@
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Friday</div>
         <div class="col-md-4">
-        <input type="text" class="form-control time_friday_start" placeholder="Start">
-        </div>
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_start_friday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberFridayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_friday" placeholder="Start" bs-timepicker>
+      </div>      
+       </div>
        </div>
        <div class="col-md-4 ">
-        <div class="col-md-6"><input type="text" class="form-control time_friday_end" placeholder="End"></div>
+      <div class="col-md-6">
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberFridayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
+      </div>
+      </div>
         <div class="col-md-6"><input type="text" class="form-control time_friday_rest" placeholder="Rest"></div>
        </div>
        <div class="col-md-4 ">
@@ -225,11 +259,17 @@
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Saturday</div>
         <div class="col-md-4">
-        <input type="text" class="form-control time_saturday_start" placeholder="Start">
-        </div>
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_start_saturday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberSaturdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_saturday" placeholder="Start" bs-timepicker>
+      </div>      
+       </div>
        </div>
        <div class="col-md-4 ">
-        <div class="col-md-6 "><input type="text" class="form-control time_saturday_end" placeholder="End"></div>
+      <div class="col-md-6">
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberSaturdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
+      </div>
+      </div>
         <div class="col-md-6 "><input type="text" class="form-control time_saturday_rest" placeholder="Rest"></div>
        </div>
        <div class="col-md-4 ">
@@ -249,11 +289,17 @@
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Sunday</div>
         <div class="col-md-4">
-        <input type="text" class="form-control time_sunday_start" placeholder="Start">
-        </div>
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time_start_sunday.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberSundayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_sunday" placeholder="Start" bs-timepicker>
+      </div>      
+       </div>
        </div>
        <div class="col-md-4 ">
-        <div class="col-md-6 "><input type="text" class="form-control time_sunday_end" placeholder="End"></div>
+      <div class="col-md-6">
+       <div class="form-group" ng-class="{'has-error': timepickerForm.time2.$invalid}">
+        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberSundayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
+      </div>
+      </div>
         <div class="col-md-6 "><input type="text" class="form-control time_sunday_rest" placeholder="Rest"></div>
        </div>
        <div class="col-md-4 ">
@@ -489,11 +535,14 @@
 			</div>
 			</div>
 		</div>
-     <script src="resources/js/jquery-2.1.1.min.js"></script>
-     <script src="resources/js/bootstrap.min.js"></script>
-     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script>
+     <script src="resources/js/angular.js"></script>
+     <script src="resources/js/angular-animate.js"></script>
+     <script src="resources/js/angular-sanitize.min.js"></script>
      <script src="resources/js/angular-strap.min.js"></script>
      <script src="resources/js/angular-strap.tpl.min.js"></script>
+     <script src="resources/js/app.js"></script>
+     <script src="resources/js/jquery-2.1.1.min.js"></script>
+     <script src="resources/js/bootstrap.min.js"></script>
      <script src="resources/js/validator.js"></script>
      <script src="resources/js/userdata.js"></script>
      <script src="resources/js/autorization.js"></script>

@@ -63,7 +63,7 @@
   </div>
   <div class="tab-pane" id="Time">
    <div class="row col-xs-12" ng-controller="DatepickerDemoCtrl">
-         <div class="form-group" ng-class="{'has-error': datepickerForm.date.$invalid}">
+         <div class="form-group col-md-4" ng-class="{'has-error': datepickerForm.date.$invalid}">
 <!--        <label class="control-label"><i class="fa fa-calendar"></i> Date <small>(as date)</small></label>-->
         <input type="text" class="form-control" ng-model="selectedDate" name="date" bs-datepicker>
       </div>
@@ -103,7 +103,7 @@
         <div class="col-md-1 col-xs-6">
     <button id="date_submit" class="btn btn-warning btn-block">Apply</button>
        </div>
-    <div class="col-md-1 col-xs-6 col-md-offset-4">
+    <div class="col-md-1 col-xs-6 col-md-offset-6">
         <button id="date_save" type="button" class="btn btn-success btn-block">Save</button>
     </div>
         <hr class="col-xs-12">

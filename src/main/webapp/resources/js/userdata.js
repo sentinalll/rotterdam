@@ -254,4 +254,38 @@
             });
             return arr;
         }
+        
+
+        $('#setting_btn').click(function save_btn(){
+            var selected_date  = {
+           	check1:  $("#check1").is(':checked'),
+        	test1:  $("#text1").text(),
+           	check2:  $("#check2").is(':checked'),
+            select1: $("#select1 option:selected").text(),
+            select2: $("#select2 option:selected").text(),
+            select3: $("#select3 option:selected").text(),
+            check3:  $("#check3").is(':checked'),
+            check4:  $("#check4").is(':checked'),
+            select4: $("#select4 option:selected").text(),
+        };
+            alert("need backend");
+
+        
+       time_date(selected_date);
+         }); 
+        function time_date(data) {
+        $.ajax({
+            type: "POST",
+            url: "api/settings",
+            data: JSON.stringify(data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            statusCode: {
+                200: function () {
+                    alert("Success...");
+                }
+            }
+        });
+    };
+        
     });

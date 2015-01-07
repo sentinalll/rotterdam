@@ -10,6 +10,9 @@
 .margin_bottom_5{
     margin-bottom: 5px;
 }
+.margin_bottom_fix{
+    margin-bottom: 0;
+}
 .margin_fix{
     margin: 0;
 }
@@ -85,6 +88,8 @@ hr {
   border: 0;
   border-top: 1px solid #eee;
 }
+/*
 .time_tab div{
     margin-bottom:10px;
 }
+*/

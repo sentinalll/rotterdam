@@ -2,7 +2,7 @@ var app = angular.module('mgcrea.ngStrapDocs', ['ngAnimate', 'ngSanitize', 'mgcr
 
 angular.module('mgcrea.ngStrapDocs')
 
-app.controller('TimepickerDemoCtrl', function($scope, $http) {
+app.controller('TimepickerDemoController', function($scope, $http) {
   $scope.time = new Date(1970, 0, 1, 10, 30);
   $scope.selectedTimeAsNumber = 10 * 36e5;
   $scope.selectedTimeAsString = '10:00';
@@ -16,7 +16,7 @@ app.config(function($datepickerProvider) {
   });
 })
 
-app.controller('DatepickerDemoCtrl', function($scope, $http) {
+app.controller('DatepickerDemoController', function($scope, $http) {
 
   $scope.selectedDate = new Date();
   $scope.selectedDateAsNumber = Date.UTC(1986, 1, 22);
@@ -30,4 +30,13 @@ app.controller('DatepickerDemoCtrl', function($scope, $http) {
     $scope.selectedDate = null;
   };
 
+});
+
+app.directive('numberMask', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            $(element).numeric();
+        }
+    }
 });

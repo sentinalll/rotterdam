@@ -62,7 +62,7 @@
         </div>
   </div>
   <div class="tab-pane" id="Time">
-   <div class="row col-xs-12" ng-controller="DatepickerDemoCtrl">
+   <div class="row col-xs-12" ng-controller="DatepickerDemoController">
          <div class="form-group col-md-4" ng-class="{'has-error': datepickerForm.date.$invalid}">
 <!--        <label class="control-label"><i class="fa fa-calendar"></i> Date <small>(as date)</small></label>-->
         <input type="text" class="form-control" ng-model="selectedDate" name="date" bs-datepicker>
@@ -108,7 +108,8 @@
     </div>
         <hr class="col-xs-12">
    </div>
-   <div class="row col-xs-12 time_tab " ng-controller="TimepickerDemoCtrl">
+   <div ng-controller="TimepickerDemoController">
+   <div class="row col-xs-12 time_tab">
        <div class="col-md-4 col-xs-12 ">
        <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Monday</div>
@@ -124,8 +125,9 @@
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberMondayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_end_monday" placeholder="End" bs-timepicker>
       </div>
       </div>
-       
-        <div class="col-md-6"><input type="text" class="form-control time_monday_rest" placeholder="Rest"></div>
+        <div class="col-md-6">
+                <input type="text" class="form-control time_monday_rest" min="0" max="3" number-mask="" placeholder="Rest">
+        </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
@@ -155,7 +157,7 @@
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberTuesdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_tuesday_rest" placeholder="Rest"></div>
+        <div class="col-md-6"><input type="text" class="form-control time_tuesday_rest" type="text" placeholder="Rest" number-mask=""></div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
@@ -185,7 +187,7 @@
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberWednesdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_wednesday_rest" placeholder="Rest"></div>
+        <div class="col-md-6"><input type="text" class="form-control time_wednesday_rest"  placeholder="Rest" number-mask=""></div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
@@ -215,7 +217,7 @@
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberThursdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_thursday_rest" placeholder="Rest"></div>
+        <div class="col-md-6"><input type="text" class="form-control time_thursday_rest"  placeholder="Rest" number-mask=""></div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
@@ -245,7 +247,7 @@
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberFridayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_friday_rest" placeholder="Rest"></div>
+        <div class="col-md-6"><input type="text" class="form-control time_friday_rest"  placeholder="Rest" number-mask=""></div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
@@ -275,7 +277,7 @@
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberSaturdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
       </div>
-        <div class="col-md-6 "><input type="text" class="form-control time_saturday_rest" placeholder="Rest"></div>
+        <div class="col-md-6 "><input type="text" class="form-control time_saturday_rest"  placeholder="Rest" number-mask=""></div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4 ">
@@ -305,7 +307,7 @@
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberSundayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
       </div>
-        <div class="col-md-6 "><input type="text" class="form-control time_sunday_rest" placeholder="Rest"></div>
+        <div class="col-md-6 "><input type="text" class="form-control time_sunday_rest"  placeholder="Rest" number-mask=""></div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4 ">
@@ -319,6 +321,7 @@
        </div>
         <hr class="col-xs-12">
    </div>
+     </div>
       <div class="row col-xs-12 row">
       <div class="col-md-6">
       <p class="font_size_18">Total time mon-fri: <span>25</span></p>
@@ -553,5 +556,7 @@
      <script src="resources/js/validator.js"></script>
      <script src="resources/js/userdata.js"></script>
      <script src="resources/js/autorization.js"></script>
+     <script src="resources/js/numeric.js"></script>
+     
   </body>
 </html>

@@ -16,8 +16,8 @@
                         $(".time_date").eq(4).append(data.weekList[4]);   
                         $(".time_date").eq(5).append(data.weekList[5]);   
                         $(".time_date").eq(6).append(data.weekList[6]);
-                        $(".time_mount :nth-child("+data.currentMonth+")").attr("selected", "selected");
-                        $(".time_week :nth-child("+data.currentWeekNumber+")").attr("selected", "selected");
+//                        $(".time_mount :nth-child("+data.currentMonth+")").attr("selected", "selected");
+//                        $(".time_week :nth-child("+data.currentWeekNumber+")").attr("selected", "selected");
             }     
                         }
                     });
@@ -122,21 +122,51 @@
             });
         });
 
-    function tryOne(data) {
+//    function tryOne(data) {
+//        var time_day_add = '<div class="time_tab_row">' +
+//            '<div class="col-md-4 margin_bottom_10 ">' +
+//            '<div class="col-md-4 font_size_18 time_date"></div>' +
+//            '<div class="col-md-4 font_size_18 time_day"></div>' +
+//            '<div class="col-md-4">' +
+//            '<input type="text" class="form-control time_' + data +'_start" placeholder="Start"></div></div>' +
+//            '<div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control time_' + data +'_end" placeholder="End"></div>' +
+//            '<div class="col-md-6"><input type="text" class="form-control time_' + data +'_rest" placeholder="Rest"></div>' +
+//            '</div><div class="col-md-4 margin_bottom_10"><div class="col-md-4">' +
+//            '<select class="form-control time_' + data +'_ride_type">' +
+//            '<option>1</option>' +
+//            '<option>2</option>' +
+//            '</select></div>' +
+//            '<div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div></div>'
+//        return time_day_add;
+//    };   
+        function tryOne(data) {
+//        var n = 1;    
         var time_day_add = '<div class="time_tab_row">' +
             '<div class="col-md-4 margin_bottom_10 ">' +
             '<div class="col-md-4 font_size_18 time_date"></div>' +
             '<div class="col-md-4 font_size_18 time_day"></div>' +
-            '<div class="col-md-4">' +
-            '<input type="text" class="form-control time_' + data +'_start" placeholder="Start"></div></div>' +
-            '<div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control time_' + data +'_end" placeholder="End"></div>' +
-            '<div class="col-md-6"><input type="text" class="form-control time_' + data +'_rest" placeholder="Rest"></div>' +
-            '</div><div class="col-md-4 margin_bottom_10"><div class="col-md-4">' +
-            '<select class="form-control time_' + data +'_ride_type">' +
-            '<option>1</option>' +
-            '<option>2</option>' +
-            '</select></div>' +
-            '<div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div></div>'
+            '<div class="col-md-4 form-group">'+
+            '<div>'+
+            '<input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_monday" placeholder="Start" bs-timepicker>'+
+      '</div>'+      
+       '</div>'+
+//        '<div class="col-md-4 form-group">'+
+//      '<div class="col-md-6">'+
+//       '<div >'+
+//        '<input type="text" class="form-control time_' + data +'_end" size="5" ng-model="selectedTimeAsNumberTuesdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>'+
+//      '</div>'+
+//      '</div>'+
+//        '<div class="col-md-6"><input type="text" class="form-control time_tuesday_rest" placeholder="Rest"></div>'+
+//       '</div>'+
+//            '<div class="col-md-6"><input type="text" class="form-control time_' + data +'_rest" placeholder="Rest"></div>' +
+//            '</div><div class="col-md-4 margin_bottom_10"><div class="col-md-4">' +
+//            '<select class="form-control time_' + data +'_ride_type">' +
+//            '<option>1</option>' +
+//            '<option>2</option>' +
+//            '</select></div>' +
+//            '<div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div>'+
+        '</div>'+
+        '</div>'
         return time_day_add;
     };
 

@@ -301,9 +301,9 @@
             alert("need backend");
 
         
-       time_date(selected_date);
+       settings(selected_date);
          }); 
-        function time_date(data) {
+        function settings(data) {
         $.ajax({
             type: "POST",
             url: "api/settings",

@@ -172,10 +172,11 @@
 
         $('#date_submit').click(function date_submit(){
                 var selected_date  = {
-                currentDate: $("#time_week_date").val(),
+                currentDate: $("#time_week_date").val()
 //                currentMonth: $(".time_mount option:selected").text(),
 //                currentWeekNumber: $(".time_week option:selected").text()
             };
+             $('.time_date').empty();
             time_date(selected_date);
              }); 
             function time_date(data) {

@@ -5,16 +5,11 @@ angular.module('mgcrea.ngStrapDocs')
 app.controller('TimepickerDemoController', function($scope, $http) {
   $scope.time = new Date(1970, 0, 1, 10, 30);
   $scope.selectedTimeAsNumber = 10 * 36e5;
-  $scope.selectedTimeAsString = '10:00';
+//  $scope.selectedTimeAsString = '10:00';
   $scope.sharedDate = new Date(new Date().setMinutes(0));
 });
-app.config(function($datepickerProvider) {
-  angular.extend($datepickerProvider.defaults, {
-    dateFormat: 'dd/MM/yyyy',
-    startWeek: 1,
-    daysOfWeekDisabled: '234567'
-  });
-})
+
+
 
 app.controller('DatepickerDemoController', function($scope, $http) {
 
@@ -31,7 +26,13 @@ app.controller('DatepickerDemoController', function($scope, $http) {
   };
 
 });
-
+app.config(function($datepickerProvider) {
+  angular.extend($datepickerProvider.defaults, {
+    dateFormat: 'dd.MM.yyyy',
+    startWeek: 1,
+    daysOfWeekDisabled: '0234567'
+  });
+});
 app.directive('numberMask', function() {
     return {
         restrict: 'A',

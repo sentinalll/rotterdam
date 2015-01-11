@@ -172,9 +172,9 @@
 
         $('#date_submit').click(function date_submit(){
                 var selected_date  = {
-                currentYear: $(".time_year option:selected").text(),
-                currentMonth: $(".time_mount option:selected").text(),
-                currentWeekNumber: $(".time_week option:selected").text()
+                currentDate: $("#time_week_date").val(),
+//                currentMonth: $(".time_mount option:selected").text(),
+//                currentWeekNumber: $(".time_week option:selected").text()
             };
             time_date(selected_date);
              }); 
@@ -276,7 +276,7 @@
             };
             $(".time_"+ day +"_start").each(function(data){
                 arr[arr.length] ={
-                    startWorkingTime :  $(".time_"+ day +"_start").val(),
+                    startWorkingTime :  $(".time_"+ day +"_start").eq(data).val(),
                     endWorkingTime :    $(".time_"+ day +"_end").eq(data).val(),
                     restTime :          $(".time_"+ day +"_rest").eq(data).val(),
                     rideType :          $(".time_"+ day +"_ride_type option:selected").eq(data).val()

@@ -276,7 +276,7 @@
             };
             $(".time_"+ day +"_start").each(function(data){
                 arr[arr.length] ={
-                    startWorkingTime :  $(".time_"+ day +"_start").eq(data).val(),
+                    startWorkingTime :  $(".time_"+ day +"_start").val(),
                     endWorkingTime :    $(".time_"+ day +"_end").eq(data).val(),
                     restTime :          $(".time_"+ day +"_rest").eq(data).val(),
                     rideType :          $(".time_"+ day +"_ride_type option:selected").eq(data).val()

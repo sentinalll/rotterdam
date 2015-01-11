@@ -288,7 +288,7 @@
         
 
         $('#setting_btn').click(function save_btn(){
-            var selected_date  = {
+            var selected_settings  = {
            	check1:  $("#check1").is(':checked'),
         	test1:  $("#text1").text(),
            	check2:  $("#check2").is(':checked'),

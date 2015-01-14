@@ -112,8 +112,8 @@
        <div class="col-md-4 col-xs-12 ">
        <div class="col-md-3 col-xs-6 font_size_18 time_date"></div>
        <div class="col-md-3 col-xs-6 font_size_18 time_day">Monday</div>
-       <div class="col-md-3 col-xs-6 ">   
-            <input type="text" class="form-control time_monday_start" size="5" ng-model="selectedTimeAsNumberMondayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_monday" placeholder="Start" bs-timepicker ></div>
+       <div class="col-md-3 col-xs-6">   
+            <input type="text" class="form-control time-start time_monday_start" size="5" ng-model="selectedTimeAsNumberMondayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_monday" placeholder="Start" bs-timepicker ></div>
         <div class="col-md-3">
         <input type="text" class="form-control time_monday_end" size="5" ng-model="selectedTimeAsNumberMondayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_end_monday" placeholder="End" bs-timepicker >
        </div>
@@ -148,10 +148,10 @@ multitrip
    </div>
    <div class="row col-xs-12 time_tab">
        <div class="col-md-4 col-xs-12 ">
-       <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
+       <div class="col-md-4 col-xs-6 font_size_18 time_date">19.01.2015</div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Tuesday</div>
         <div class="col-md-4 form-group">
-        <input type="text" class="form-control time_tuesday_start" size="5" ng-model="selectedTimeAsNumberTuesdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_tuesday" placeholder="Start" bs-timepicker>
+        <input type="text" class="form-control time_start time_tuesday_start" size="5" ng-model="selectedTimeAsNumberTuesdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_tuesday" placeholder="Start" bs-timepicker>
        </div>
        </div>
        <div class="col-md-4 form-group">
@@ -174,10 +174,10 @@ multitrip
    </div>
    <div class="row col-xs-12 time_tab">
        <div class="col-md-4 col-xs-12 ">
-       <div class="col-md-4 col-xs-6 font_size_18 time_date"></div>
+       <div class="col-md-4 col-xs-6 font_size_18 time_date">26.01.2015</div>
        <div class="col-md-4 col-xs-6 font_size_18 time_day">Wednesday</div>
         <div class="col-md-4 form-group">
-        <input type="text" class="form-control time_wednesday_start" size="5" ng-model="selectedTimeAsNumberWednesdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_wednesday" placeholder="Start" bs-timepicker>
+        <input type="text" class="form-control  time_wednesday_start" size="5" ng-model="selectedTimeAsNumberWednesdayStart" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_wednesday" placeholder="Start" bs-timepicker>
        </div>
        </div>
        <div class="col-md-4 form-group">
@@ -571,16 +571,16 @@ multitrip
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button id="modal_close" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Multitrip</h4>
       </div>
-      <div class="modal-body">
+      <div id="multitripform" class="modal-body">
         <div class="col-md-12">
                      <div class="form-group col-md-4">
         <input id="time_week_date_modal1" type="text" class="form-control" ng-model="selectedDateModal1" name="date" bs-datepicker>
       </div>
              <div class="form-group col-md-4">
-        <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberModal1Start" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_modal1" placeholder="Start" bs-timepicker>
+        <input id="time_start_modal" type="text" class="form-control " size="5" ng-model="selectedTimeAsNumberModal1Start" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_modal1" placeholder="Start" bs-timepicker>
                          </div>
 <!--
             <div class="form-group col-md-4">
@@ -597,14 +597,14 @@ multitrip
         <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberModal2Start" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_modal2" placeholder="Start" bs-timepicker>
                          </div>
 -->
-            <div class="form-group col-md-4">
-            <input type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberModal2End" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_start_modal2" placeholder="End" bs-timepicker>
+            <div class="form-group col-md-4 ">
+            <input id="time_end_modal" type="text" class="form-control" size="5" ng-model="selectedTimeAsNumberModal2End" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_end_modal2" placeholder="End" bs-timepicker>
             </div>      
       </div>
     </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button id="multitrip_save" type="button" class="btn btn-primary">Save changes</button>
       </div>
   </div>
 </div>

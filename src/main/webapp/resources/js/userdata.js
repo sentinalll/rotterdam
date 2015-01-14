@@ -321,4 +321,17 @@
             }
         });
     };
+        $('#multitrip_save').click(function multitrip(day){
+        var multitripDateStart = $('#time_week_date_modal1').val();
+        var multitripTimeStart = $('#time_start_modal').val();  
+        var multitripDateEnd = $('#time_week_date_modal2').val();
+        var multitripTimeEnd = $('#time_end_modal').val(); 
+        $('#time_week_date_modal1').val('');
+        $('#time_start_modal').val('');  
+        $('#time_week_date_modal2').val('');
+        $('#time_end_modal').val('');        
+        $('#modal_close').click();        
+        $( ".time_tab div:contains("+multitripDateStart+")").children(3).addClass('modal_date');
+        $( ".modal_date:nth-child(3) input").val(multitripTimeStart);
+    });
     });

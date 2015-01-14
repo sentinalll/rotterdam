@@ -131,12 +131,15 @@
             '<input type="text" class="form-control time_' + data +'_start" placeholder="Start"></div></div>' +
             '<div class="col-md-4 margin_bottom_10"><div class="col-md-6"><input type="text" class="form-control time_' + data +'_end" placeholder="End"></div>' +
             '<div class="col-md-6"><input type="text" class="form-control time_' + data +'_rest" placeholder="Rest" number-mask=""></div>' +
-            '</div><div class="col-md-4 margin_bottom_10"><div class="col-md-4">' +
-            '<select class="form-control time_' + data +'_ride_type">' +
-            '<option>1</option>' +
-            '<option>2</option>' +
-            '</select></div>' +
-            '<div class="col-md-4 "><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div></div>'
+            '</div>'+
+            '<div class="col-md-4 margin_bottom_10">'+
+//            '<div class="col-md-4">' +
+//            '<select class="form-control time_' + data +'_ride_type">' +
+//            '<option>1</option>' +
+//            '<option>2</option>' +
+//            '</select>'+
+//            '</div>' +
+            '<div class="col-md-4"><button type="button" class="btn btn-danger btn-block time_tab_del">Delete</button></div></div></div>'
         return time_day_add;
     };   
 //        function tryOne(data) {

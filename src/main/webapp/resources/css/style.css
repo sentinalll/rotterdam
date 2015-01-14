@@ -93,3 +93,6 @@ hr {
     margin-bottom:10px;
 }
 */
+.modal-footer{
+    border-top:none;
+}

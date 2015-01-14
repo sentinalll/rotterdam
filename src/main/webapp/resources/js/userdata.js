@@ -331,7 +331,21 @@
         $('#time_week_date_modal2').val('');
         $('#time_end_modal').val('');        
         $('#modal_close').click();        
-        $( ".time_tab div:contains("+multitripDateStart+")").children(3).addClass('modal_date');
-        $( ".modal_date:nth-child(3) input").val(multitripTimeStart);
+        $( ".time_tab div:contains("+multitripDateStart+")").children(3).addClass('modal_date1_start');
+        $( ".modal_date1_start:nth-child(3) input").val(multitripTimeStart);   
+        $( ".modal_date2_start:nth-child(3) input").attr('disabled','disabled');
+            
+//        $( ".time_tab div("+multitripDateStart+")").children(3).addClass('modal_date1_end');
+//        $( ".modal_date1_end:nth-child(3) input").val(multitripTimeStart);   
+//        $( ".modal_date1_end:nth-child(3) input").attr('disabled','disabled');
+    
+        $( ".time_tab div:contains("+multitripDateEnd+")").children(3).addClass('modal_date2_start');
+        $( ".modal_date2_start:nth-child(3) input").val("00:00");
+        $( ".modal_date2_start:nth-child(3) input").attr('disabled','disabled');
+            
+        $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date1_start');
+        $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date1_end');           $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date2_start');
+        $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date2_end');
+
     });
     });

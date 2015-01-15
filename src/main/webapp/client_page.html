@@ -122,16 +122,22 @@ multitrip
        </div>
        </div>
        <div class="col-md-4 form-group">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <input type="text" class="form-control time_monday_end" size="5" ng-model="selectedTimeAsNumberMondayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_end_monday" placeholder="End" bs-timepicker >
       </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
                 <input type="text" class="form-control time_monday_rest positive-integer" min="0" max="3" number-mask="" placeholder="Rest">
+        </div>
+        <div class="col-md-4">
+        <select class="form-control time_monday_ride_type">
+          <option>Single</option>
+          <option>Mutliple</option>
+        </select> 
         </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
-         <select class="form-control time_monday_ride_type">
+         <select class="form-control time_monday_type_day">
           <option>Work</option>
           <option>Weekend</option>
         </select>
@@ -150,14 +156,20 @@ multitrip
        </div>
        </div>
        <div class="col-md-4 form-group">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <input type="text" class="form-control time_tuesday_end" size="5" ng-model="selectedTimeAsNumberTuesdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time_end_tuesday" placeholder="End" bs-timepicker >
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_tuesday_rest positive-integer" type="text" placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4"><input type="text" class="form-control time_tuesday_rest positive-integer" type="text" placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4">
+        <select class="form-control time_tuesday_ride_type">
+          <option>Single</option>
+          <option>Mutliple</option>
+        </select> 
+        </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
-         <select class="form-control time_tuesday_ride_type">
+         <select class="form-control time_tuesday_type_day">
           <option>Work</option>
           <option>Weekend</option>
         </select>
@@ -176,14 +188,20 @@ multitrip
        </div>
        </div>
        <div class="col-md-4 form-group">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <input type="text" class="form-control time_wednesday_end" size="5" ng-model="selectedTimeAsNumberWednesdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_wednesday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4"><input type="text" class="form-control time_wednesday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4">
+        <select class="form-control time_tuesday_ride_type">
+          <option>Single</option>
+          <option>Mutliple</option>
+        </select> 
+        </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
-         <select class="form-control time_wednesday_ride_type">
+         <select class="form-control time_wednesday_type_day">
           <option>Work</option>
           <option>Weekend</option>
         </select>
@@ -202,10 +220,16 @@ multitrip
        </div>
        </div>
        <div class="col-md-4 form-group">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <input type="text" class="form-control time_thursday_end" size="5" ng-model="selectedTimeAsNumberThursdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_thursday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4"><input type="text" class="form-control time_thursday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4">
+        <select class="form-control time_thursday_type_day">
+          <option>Single</option>
+          <option>Mutliple</option>
+        </select> 
+        </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
@@ -228,10 +252,16 @@ multitrip
        </div>
        </div>
        <div class="col-md-4 form-group">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <input type="text" class="form-control time_friday_end" size="5" ng-model="selectedTimeAsNumberFridayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
-        <div class="col-md-6"><input type="text" class="form-control time_friday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4"><input type="text" class="form-control time_friday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4">
+        <select class="form-control time_friday_type_day">
+          <option>Single</option>
+          <option>Mutliple</option>
+        </select> 
+        </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4">
@@ -254,10 +284,16 @@ multitrip
        </div>
        </div>
        <div class="col-md-4 form-group">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <input type="text" class="form-control time_saturday_end" size="5" ng-model="selectedTimeAsNumberSaturdayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
-        <div class="col-md-6 "><input type="text" class="form-control time_saturday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4 "><input type="text" class="form-control time_saturday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4">
+        <select class="form-control time_saturday_type_day">
+          <option>Single</option>
+          <option>Mutliple</option>
+        </select> 
+        </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4 ">
@@ -280,10 +316,16 @@ multitrip
        </div>
        </div>
        <div class="col-md-4 form-group">
-      <div class="col-md-6">
+      <div class="col-md-4">
         <input type="text" class="form-control time_sunday_end" size="5" ng-model="selectedTimeAsNumberSundayEnd" data-time-format="HH:mm" data-time-type="number" data-autoclose="1" name="time2" placeholder="End" bs-timepicker>
       </div>
-        <div class="col-md-6 "><input type="text" class="form-control time_sunday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4 "><input type="text" class="form-control time_sunday_rest positive-integer"  placeholder="Rest" number-mask=""></div>
+        <div class="col-md-4">
+        <select class="form-control time_sunday_type_day">
+          <option>Single</option>
+          <option>Mutliple</option>
+        </select> 
+        </div>
        </div>
        <div class="col-md-4 form-group">
          <div class="col-md-4 ">

@@ -4,12 +4,25 @@
 .margin_top_15{
     margin-top: 15px;
 }
+.margin_top_50{
+    margin-top: 50px;
+}
+/*
+.margin_top_350{
+    margin-top: 350px;
+}
+*/
 .margin_bottom_10{
     margin-bottom: 10px;
 }
 .margin_bottom_5{
     margin-bottom: 5px;
 }
+.margin_vertical_10{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .margin_bottom_fix{
     margin-bottom: 0;
 }

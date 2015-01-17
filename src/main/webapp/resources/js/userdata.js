@@ -203,10 +203,13 @@
                 }
             });
         };
+        //            compensation time start
+            
                $('#compensation_btn').click(function compensation(){
                 var compensation = {
                     use_time_for_time: $('#compensation_time').val()   
                 };
+
                   compensation_json(compensation);
                });
             function compensation_json(data) {
@@ -223,6 +226,8 @@
                 }
             });
         };
+        //            compensation time end
+
 //        var time_start = new Array( data.weekList[0], data.weekList[1],data.weekList[3], data.weekList[4],data.weekList[5], data.weekList[6] );
 //        alert(time_start[1]);
    $('#payment_time_btn').click(function payment_time(){
@@ -289,6 +294,7 @@
             return arr;
         }
         
+        //            Settings tab start 
 
         $('#setting_btn').click(function save_btn(){
             var selected_settings  = {
@@ -321,6 +327,9 @@
             }
         });
     };
+        //            Settings tab end 
+
+       //            Tab time multitrip start 
         $('#multitrip_save').click(function multitrip(day){
         var multitripDateStart = $('#time_week_date_modal1').val();
         var multitripTimeStart = $('#time_start_modal').val();  
@@ -352,6 +361,12 @@
         $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date1_start');
         $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date1_end');           $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date2_start');
         $( ".time_tab div:contains("+multitripDateEnd+")").children(3).removeClass('modal_date2_end');
+       //            Tab time multitrip end 
 
+
+            
+            
+            
+            
     });
     });
